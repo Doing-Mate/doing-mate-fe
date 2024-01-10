@@ -1,6 +1,6 @@
 import Button from "../common/Button";
 
-const smallRectButton = ({ text }) => {
+const SmallRectButton = ({ text }) => {
   return (
     <Button
       sizeType={"smallRectangle"}
@@ -12,4 +12,4 @@ const smallRectButton = ({ text }) => {
   );
 };
 
-export default smallRectButton;
+export default SmallRectButton;

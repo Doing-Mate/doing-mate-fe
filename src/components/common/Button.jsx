@@ -14,7 +14,7 @@ const Button = ({
       fontSizeType={fontSizeType}
       borderType={borderType}
       disabled={disabled}
-      props={props}
+      {...props}
     >
       {children}
     </StyledButton>
@@ -27,6 +27,36 @@ const StyledButton = styled.button`
   ${({ borderType }) => Border[borderType]}
 `;
 
+const SmallRectangleSize = css`
+  width: 60px;
+  height: 30px;
+`;
+
+const MediumRectangleSize = css`
+  width: 90px;
+  height: 33px;
+`;
+
+const LargeRectangleSize = css`
+  width: 300px;
+  height: 55px;
+`;
+
+const SmallSquareSize = css`
+  width: 40px;
+  height: 40px;
+`;
+
+const MediumSquareSize = css`
+  width: 60px;
+  height: 60px;
+`;
+
+const LargeSquareSize = css`
+  width: 80px;
+  height: 80px;
+`;
+
 const Size = {
   smallRectangle: SmallRectangleSize,
   mediumRectangle: MediumRectangleSize,
@@ -36,58 +66,22 @@ const Size = {
   largeSquare: LargeSquareSize,
 };
 
-const SmallRectangleSize = css`
-  width: 87px;
-  height: 43px;
+const SmallFontSize = css`
+  font-size: 12px;
 `;
 
-const MediumRectangleSize = css`
-  width: 156px;
-  height: 60px;
+const MediumFontSize = css`
+  font-size: 14px;
 `;
 
-const LargeRectangleSize = css`
-  width: 270px;
-  height: 56px;
-`;
-
-const SmallSquareSize = css`
-  width: 87px;
-  height: 43px;
-`;
-
-const MediumSquareSize = css`
-  width: 156px;
-  height: 60px;
-`;
-
-const LargeSquareSize = css`
-  width: 270px;
-  height: 56px;
+const LargeFontSize = css`
+  font-size: 16px;
 `;
 
 const FontSize = {
   smallFont: SmallFontSize,
   mediumFont: MediumFontSize,
   largeFont: LargeFontSize,
-};
-
-const SmallFontSize = css`
-  font-size: 14px;
-`;
-
-const MediumFontSize = css`
-  font-size: 16px;
-`;
-
-const LargeFontSize = css`
-  font-size: 20px;
-`;
-
-const Border = {
-  none: NoneType,
-  square: SquareType,
-  round: RoundType,
 };
 
 const NoneType = css`
@@ -102,5 +96,11 @@ const RoundType = css`
   border: 1px solid black;
   border-radius: 5px;
 `;
+
+const Border = {
+  none: NoneType,
+  square: SquareType,
+  round: RoundType,
+};
 
 export default Button;
