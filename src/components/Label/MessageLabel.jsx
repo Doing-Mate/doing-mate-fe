@@ -1,4 +1,4 @@
-import Label from "../common/label";
+import { Label } from "../common/label";
 
 export const MessageLabel = ({ text }) => {
   return (

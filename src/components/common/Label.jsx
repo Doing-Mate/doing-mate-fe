@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const Label = ({
+export const Label = ({
   fontSizeType,
   backgroundColor = "transparent",
   children,
@@ -42,5 +42,3 @@ const FontSize = {
   mediumFont: MediumFontSize,
   largeFont: LargeFontSize,
 };
-
-export default Label;

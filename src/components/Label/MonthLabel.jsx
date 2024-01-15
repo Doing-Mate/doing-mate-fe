@@ -1,4 +1,4 @@
-import Label from "../common/label";
+import { Label } from "../common/label";
 import styled from "styled-components";
 
 const StyledLabel = styled(Label)`

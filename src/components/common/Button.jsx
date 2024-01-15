@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const Button = ({
+export const Button = ({
   sizeType,
   fontSizeType,
   borderType,
@@ -106,5 +106,3 @@ const Border = {
   square: SquareType,
   round: RoundType,
 };
-
-export default Button;

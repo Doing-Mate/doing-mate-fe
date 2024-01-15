@@ -1,4 +1,4 @@
-import Button from "../common/Button";
+import { Button } from "../common/Button";
 import styled, { css } from "styled-components";
 
 const ColorButton = styled(Button)`
