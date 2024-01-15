@@ -1,4 +1,4 @@
-import CreateTodoButton from "./CreateTodoButton";
+import { CreateTodoButton } from "./CreateTodoButton";
 
 export default {
   component: CreateTodoButton,

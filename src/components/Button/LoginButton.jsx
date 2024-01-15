@@ -12,7 +12,7 @@ const IconImage = styled.img`
   margin: auto;
 `;
 
-const LoginButton = ({ icon, text }) => {
+export const LoginButton = ({ icon, text }) => {
   return (
     <StyledLoginButton
       sizeType={"largeRectangle"}
@@ -24,5 +24,3 @@ const LoginButton = ({ icon, text }) => {
     </StyledLoginButton>
   );
 };
-
-export default LoginButton;

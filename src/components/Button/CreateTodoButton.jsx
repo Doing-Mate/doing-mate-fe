@@ -1,6 +1,6 @@
 import { Button } from "../common/Button";
 
-const CreateTodoButton = ({ text }) => {
+export const CreateTodoButton = ({ text }) => {
   return (
     <Button
       sizeType={"mediumRectangle"}
@@ -11,5 +11,3 @@ const CreateTodoButton = ({ text }) => {
     </Button>
   );
 };
-
-export default CreateTodoButton;

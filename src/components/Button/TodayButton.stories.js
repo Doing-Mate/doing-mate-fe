@@ -1,4 +1,4 @@
-import TodayButton from "./TodayButton.stories";
+import { TodayButton } from "./TodayButton";
 
 export default {
   component: TodayButton,

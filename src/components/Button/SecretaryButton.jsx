@@ -11,7 +11,7 @@ const IconImage = styled.img`
   margin: auto;
 `;
 
-const SecretaryButton = ({ icon }) => {
+export const SecretaryButton = ({ icon }) => {
   return (
     <TransparentButton
       sizeType={"largeSquare"}
@@ -22,5 +22,3 @@ const SecretaryButton = ({ icon }) => {
     </TransparentButton>
   );
 };
-
-export default SecretaryButton;

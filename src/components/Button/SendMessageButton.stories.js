@@ -1,4 +1,4 @@
-import SendMessageButton from "./SendMessageButton";
+import { SendMessageButton } from "./SendMessageButton";
 
 export default {
   component: SendMessageButton,

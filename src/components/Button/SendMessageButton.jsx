@@ -5,7 +5,7 @@ const StyledButton = styled(Button)`
   font-weight: bold;
 `;
 
-const SendMessageButton = ({ text }) => {
+export const SendMessageButton = ({ text }) => {
   return (
     <StyledButton
       sizeType={"mediumSquare"}
@@ -16,5 +16,3 @@ const SendMessageButton = ({ text }) => {
     </StyledButton>
   );
 };
-
-export default SendMessageButton;

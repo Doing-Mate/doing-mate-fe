@@ -1,4 +1,4 @@
-import SecretaryButton from "./SecretaryButton";
+import { SecretaryButton } from "./SecretaryButton";
 import SecretaryIcon from "../../icons/ic_bot.png";
 
 export default {

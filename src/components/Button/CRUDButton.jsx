@@ -9,7 +9,7 @@ const ColorButton = styled(Button)`
     `}
 `;
 
-const CRUDButton = ({ text, colorType = "black" }) => {
+export const CRUDButton = ({ text, colorType = "black" }) => {
   return (
     <ColorButton
       sizeType={"mediumRectangle"}
@@ -21,5 +21,3 @@ const CRUDButton = ({ text, colorType = "black" }) => {
     </ColorButton>
   );
 };
-
-export default CRUDButton;

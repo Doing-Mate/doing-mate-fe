@@ -1,4 +1,4 @@
-import CRUDButton from "./CRUDButton";
+import { CRUDButton } from "./CRUDButton";
 
 export default {
   component: CRUDButton,

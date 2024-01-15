@@ -11,7 +11,7 @@ const IconImage = styled.img`
   margin: auto;
 `;
 
-const MoveMonthButton = ({ icon }) => {
+export const MoveMonthButton = ({ icon }) => {
   return (
     <TransparentButton
       sizeType={"smallSquare"}
@@ -22,5 +22,3 @@ const MoveMonthButton = ({ icon }) => {
     </TransparentButton>
   );
 };
-
-export default MoveMonthButton;
