@@ -1,14 +1,25 @@
 import Button from "../common/Button";
+import styled from "styled-components";
+
+const TransparentButton = styled(Button)`
+  background-color: transparent;
+`;
+
+const IconImage = styled.img`
+  width: inherit;
+  height: inherit;
+  margin: auto;
+`;
 
 const SecretaryButton = ({ icon }) => {
   return (
-    <Button
+    <TransparentButton
       sizeType={"largeSquare"}
       fontSizeType={"largeFont"}
       borderType={"none"}
     >
-      <img src={icon} />
-    </Button>
+      <IconImage src={icon} />
+    </TransparentButton>
   );
 };
 

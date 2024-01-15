@@ -22,6 +22,10 @@ const Button = ({
 };
 
 const StyledButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
   ${({ sizeType }) => Size[sizeType]}
   ${({ fontSizeType }) => FontSize[fontSizeType]}
   ${({ borderType }) => Border[borderType]}
@@ -38,18 +42,18 @@ const MediumRectangleSize = css`
 `;
 
 const LargeRectangleSize = css`
-  width: 300px;
+  width: 260px;
   height: 55px;
 `;
 
 const SmallSquareSize = css`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 `;
 
 const MediumSquareSize = css`
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
 `;
 
 const LargeSquareSize = css`
