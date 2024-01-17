@@ -6,5 +6,5 @@ const StyledLabel = styled(Label)`
 `;
 
 export const TitleLabel = ({ text }) => {
-  return <StyledLabel fontSizeType={"largeFont"}>{text}</StyledLabel>;
+  return <StyledLabel fontSizeType={"extraLargeFont"}>{text}</StyledLabel>;
 };

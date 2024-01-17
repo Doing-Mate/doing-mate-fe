@@ -26,14 +26,18 @@ const StyledLabel = styled.label`
 `;
 
 const SmallFontSize = css`
-  font-size: 14px;
+  font-size: 12px;
 `;
 
 const MediumFontSize = css`
-  font-size: 18px;
+  font-size: 14px;
 `;
 
 const LargeFontSize = css`
+  font-size: 18px;
+`;
+
+const ExtraLargeFontSize = css`
   font-size: 30px;
 `;
 
@@ -41,4 +45,5 @@ const FontSize = {
   smallFont: SmallFontSize,
   mediumFont: MediumFontSize,
   largeFont: LargeFontSize,
+  extraLargeFont: ExtraLargeFontSize,
 };

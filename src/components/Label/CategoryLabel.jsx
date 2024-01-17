@@ -6,5 +6,5 @@ const StyledLabel = styled(Label)`
 `;
 
 export const CategoryLabel = ({ text }) => {
-  return <StyledLabel fontSizeType={"smallFont"}>{text}</StyledLabel>;
+  return <StyledLabel fontSizeType={"mediumFont"}>{text}</StyledLabel>;
 };

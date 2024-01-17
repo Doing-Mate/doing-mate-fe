@@ -5,5 +5,5 @@ const StyledLabel = styled(Label)`
   font-weight: bold;
 `;
 export const MonthLabel = ({ text }) => {
-  return <StyledLabel fontSizeType={"mediumFont"}>{text}</StyledLabel>;
+  return <StyledLabel fontSizeType={"largeFont"}>{text}</StyledLabel>;
 };

@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 
 export const Button = ({
+  buttonType = "basic",
   sizeType,
   fontSizeType,
   borderType,
@@ -10,6 +11,7 @@ export const Button = ({
 }) => {
   return (
     <StyledButton
+      buttonType={buttonType}
       sizeType={sizeType}
       fontSizeType={fontSizeType}
       borderType={borderType}
@@ -22,14 +24,29 @@ export const Button = ({
 };
 
 const StyledButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   cursor: pointer;
+  ${({ buttonType }) => ButtonType[buttonType]}
   ${({ sizeType }) => Size[sizeType]}
   ${({ fontSizeType }) => FontSize[fontSizeType]}
   ${({ borderType }) => Border[borderType]}
 `;
+
+const BasicButton = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const DropdownButton = css`
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  align-items: center;
+`;
+
+const ButtonType = {
+  basic: BasicButton,
+  dropdown: DropdownButton,
+};
 
 const SmallRectangleSize = css`
   width: 60px;
@@ -37,7 +54,7 @@ const SmallRectangleSize = css`
 `;
 
 const MediumRectangleSize = css`
-  width: 90px;
+  width: 100px;
   height: 33px;
 `;
 
