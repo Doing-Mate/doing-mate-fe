@@ -4,7 +4,7 @@ export default {
   component: Label,
   argTypes: {
     fontSizeType: {
-      options: ["smallFont", "mediumFont", "largeFont"],
+      options: ["smallFont", "mediumFont", "largeFont", "extraLargeFont"],
       control: { type: "radio" },
     },
     backgroundColor: {
