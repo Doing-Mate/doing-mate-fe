@@ -17,10 +17,6 @@ export const DropdownContainer = ({ title, dataList }) => {
     }, 100);
   };
 
-  const StyledDropdownContainer = styled.div`
-    width: fit-content;
-  `;
-
   return (
     <StyledDropdownContainer
       onBlur={handleBlurContainer}
@@ -41,3 +37,7 @@ export const DropdownContainer = ({ title, dataList }) => {
     </StyledDropdownContainer>
   );
 };
+
+const StyledDropdownContainer = styled.div`
+  width: fit-content;
+`;
