@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { TimePicker as ReactTimePicker } from "@mui/x-date-pickers/TimePicker/TimePicker";
+import { TimePicker as MuiTimePicker } from "@mui/x-date-pickers/TimePicker/TimePicker";
 import styled from "styled-components";
 
 export const TimePicker = () => {
@@ -17,6 +17,6 @@ export const TimePicker = () => {
   );
 };
 
-const StyledReactTimePicker = styled(ReactTimePicker)`
+const StyledReactTimePicker = styled(MuiTimePicker)`
   padding: 5px 10px;
 `;

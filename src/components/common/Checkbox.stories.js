@@ -3,7 +3,7 @@ import { Checkbox } from "./Checkbox";
 export default {
   component: Checkbox,
   argTypes: {
-    backgroundColor: {
+    colorType: {
       control: { type: "color" },
     },
   },
