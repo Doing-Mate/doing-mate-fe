@@ -1,23 +1,17 @@
-import styled, { css } from "styled-components";
+import { Checkbox as MuiCheckbox } from "@mui/material";
 
-export const Checkbox = ({ backgroundColor = "white", children, ...props }) => {
+export const Checkbox = ({ colorType, ...props }) => {
   return (
-    <StyledCheckBox
-      type="checkbox"
-      backgroundColor={backgroundColor}
+    <MuiCheckbox
+      disableRipple
+      sx={{
+        color: colorType,
+        "&.Mui-checked": {
+          color: colorType,
+        },
+        "& .MuiSvgIcon-root": { fontSize: 30 },
+      }}
       {...props}
-    >
-      {children}
-    </StyledCheckBox>
+    />
   );
 };
-
-const StyledCheckBox = styled.input`
-  width: 20px;
-  height: 20px;
-  margin: auto;
-  ${({ backgroundColor }) =>
-    css`
-      accent-color: ${backgroundColor};
-    `}
-`;
