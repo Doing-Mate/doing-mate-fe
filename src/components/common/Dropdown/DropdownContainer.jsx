@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DropdownList } from "./DropdownList";
-import { Button } from "./Button";
+import { Button } from "../Button";
 import styled from "styled-components";
 
 export const DropdownContainer = ({ title, dataList }) => {
@@ -28,7 +28,7 @@ export const DropdownContainer = ({ title, dataList }) => {
         fontSizeType={"smallFont"}
         borderType={"square"}
       >
-        {selectedItem}
+        <StyledSelectedItem>{selectedItem}</StyledSelectedItem>
         <label>{isDropdownView ? "▲" : "▼"}</label>
       </Button>
       {isDropdownView && (
@@ -40,4 +40,8 @@ export const DropdownContainer = ({ title, dataList }) => {
 
 const StyledDropdownContainer = styled.div`
   width: fit-content;
+`;
+
+const StyledSelectedItem = styled.label`
+  max-width: 60px;
 `;

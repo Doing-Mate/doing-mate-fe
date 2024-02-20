@@ -1,4 +1,4 @@
-import { InputText } from "./InputText";
+import { InputText } from ".";
 
 export default {
   component: InputText,

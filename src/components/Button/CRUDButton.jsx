@@ -1,12 +1,9 @@
 import { Button } from "../common/Button";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const ColorButton = styled(Button)`
   font-weight: bold;
-  ${({ colorType }) =>
-    css`
-      color: ${colorType};
-    `}
+  color: ${({ colorType }) => colorType};
 `;
 
 export const CRUDButton = ({ text, colorType = "black" }) => {
