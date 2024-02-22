@@ -1,5 +1,5 @@
 import { SecretaryButton } from "./SecretaryButton";
-import SecretaryIcon from "../../icons/ic_bot.png";
+import { SecretaryIcon } from "../../constants/icon";
 
 export default {
   component: SecretaryButton,
