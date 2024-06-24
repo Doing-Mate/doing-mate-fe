@@ -1,7 +1,16 @@
 import styled from "styled-components";
 import { Label } from "../Label";
 
-export const DropdownList = ({ dataList, setSelectedItem, ...props }) => {
+interface DropdownListProps {
+  dataList: { [key: string]: string };
+  setSelectedItem: React.Dispatch<string>;
+}
+
+export const DropdownList = ({
+  dataList,
+  setSelectedItem,
+  ...props
+}: DropdownListProps) => {
   return (
     <StyledDropdownList {...props}>
       {Object.entries(dataList).map(([key, value]) => (

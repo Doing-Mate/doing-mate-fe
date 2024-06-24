@@ -1,5 +1,7 @@
 import { InheritIcon } from ".";
-import { LeftIcon, RightIcon, SecretaryIcon } from "../../../constants/icon";
+import LeftIcon from "../../../icons/ic_left.png";
+import RightIcon from "../../../icons/ic_right.png";
+import SecretaryIcon from "../../../icons/ic_bot.png";
 
 export default {
   component: InheritIcon,

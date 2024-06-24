@@ -2,21 +2,23 @@ import { useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker as MuiTimePicker } from "@mui/x-date-pickers/TimePicker/TimePicker";
-import styled from "styled-components";
+import dayjs, { Dayjs } from "dayjs";
+// import styled from "styled-components";
+// import { styled } from "@mui/material/styles";
 
 export const TimePicker = () => {
-  const [startTime, setStartTime] = useState();
+  const [startTime, setStartTime] = useState<Dayjs | null>(dayjs());
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <StyledReactTimePicker
+      <MuiTimePicker
         label=""
         value={startTime}
-        onChange={(time) => setStartTime(time)}
+        onChange={(newTime) => setStartTime(newTime)}
       />
     </LocalizationProvider>
   );
 };
 
-const StyledReactTimePicker = styled(MuiTimePicker)`
-  padding: 5px 10px;
-`;
+// const StyledReactTimePicker = styled(MuiTimePicker)`
+//   padding: 5px 10px;
+// `;

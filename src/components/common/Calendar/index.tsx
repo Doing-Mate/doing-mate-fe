@@ -1,6 +1,6 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin from "@fullcalendar/interaction";
+import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 
 export const Calendar = () => {
   const events = [
@@ -8,7 +8,7 @@ export const Calendar = () => {
     { title: "둔산동 데이트", date: "2024-01-13" },
   ];
 
-  const dateClick = (info) => {
+  const dateClick = (info: DateClickArg) => {
     console.log(info.dateStr);
   };
 

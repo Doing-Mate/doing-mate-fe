@@ -1,6 +1,10 @@
 import { Button } from "../common/Button";
 
-export const CreateTodoButton = ({ text }) => {
+interface CreateTodoButtonProps {
+  text?: string;
+}
+
+export const CreateTodoButton = ({ text }: CreateTodoButtonProps) => {
   return (
     <Button
       sizeType={"mediumRectangle"}

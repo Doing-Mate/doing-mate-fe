@@ -3,7 +3,15 @@ import { DropdownList } from "./DropdownList";
 import { Button } from "../Button";
 import styled from "styled-components";
 
-export const DropdownContainer = ({ title, dataList }) => {
+interface DropdownContainerProps {
+  title: string;
+  dataList: { [key: string]: string };
+}
+
+export const DropdownContainer = ({
+  title,
+  dataList,
+}: DropdownContainerProps) => {
   const [isDropdownView, setDropdownView] = useState(false);
   const [selectedItem, setSelectedItem] = useState(title);
 

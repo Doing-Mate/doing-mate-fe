@@ -1,6 +1,10 @@
 import { Checkbox as MuiCheckbox } from "@mui/material";
 
-export const Checkbox = ({ colorType, ...props }) => {
+interface CheckboxProps {
+  colorType: string;
+}
+
+export const Checkbox = ({ colorType, ...props }: CheckboxProps) => {
   return (
     <MuiCheckbox
       disableRipple
