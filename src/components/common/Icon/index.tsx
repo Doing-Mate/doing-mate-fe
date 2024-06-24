@@ -1,6 +1,12 @@
 import styled, { css } from "styled-components";
 
-export const Icon = ({ sizeType, icon, children, ...props }) => {
+interface IconProps {
+  sizeType: "small" | "medium" | "large" | "inherit";
+  icon: string;
+  children?: React.ReactNode;
+}
+
+export const Icon = ({ sizeType, icon, children, ...props }: IconProps) => {
   return (
     <StyledIcon sizeType={sizeType} src={icon} {...props}>
       {children}
@@ -8,7 +14,9 @@ export const Icon = ({ sizeType, icon, children, ...props }) => {
   );
 };
 
-const StyledIcon = styled.img`
+type StyledIconProps = Omit<IconProps, "icon">;
+
+const StyledIcon = styled.img<StyledIconProps>`
   margin: auto;
   ${({ sizeType }) => Size[sizeType]}
 `;

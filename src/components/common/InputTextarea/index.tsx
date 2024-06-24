@@ -1,5 +1,14 @@
 import styled, { css } from "styled-components";
 
+interface InputTextareaProps {
+  sizeType: "small" | "medium" | "large";
+  fontSizeType: "smallFont" | "mediumFont" | "largeFont";
+  borderType: "none" | "square" | "round";
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+}
+
 export const InputTextarea = ({
   sizeType,
   fontSizeType,
@@ -8,7 +17,7 @@ export const InputTextarea = ({
   disabled = false,
   required = false,
   ...props
-}) => {
+}: InputTextareaProps) => {
   return (
     <StyledInputTextarea
       sizeType={sizeType}
@@ -22,7 +31,7 @@ export const InputTextarea = ({
   );
 };
 
-const StyledInputTextarea = styled.textarea`
+const StyledInputTextarea = styled.textarea<InputTextareaProps>`
   padding: 10px;
   line-height: 150%;
   ${({ sizeType }) => Size[sizeType]}

@@ -1,14 +1,29 @@
 import styled, { css } from "styled-components";
 
+interface ButtonProps {
+  buttonType?: "basic" | "dropdown";
+  sizeType:
+    | "smallRectangle"
+    | "mediumRectangle"
+    | "largeRectangle"
+    | "smallSquare"
+    | "mediumSquare"
+    | "largeSquare";
+  fontSizeType: "smallFont" | "mediumFont" | "largeFont";
+  borderType: "none" | "square" | "round";
+  disabled?: boolean;
+  children: React.ReactNode;
+}
+
 export const Button = ({
-  buttonType = "basic",
+  buttonType,
   sizeType,
   fontSizeType,
   borderType,
   disabled = false,
   children,
   ...props
-}) => {
+}: ButtonProps) => {
   return (
     <StyledButton
       buttonType={buttonType}
@@ -23,9 +38,9 @@ export const Button = ({
   );
 };
 
-const StyledButton = styled.button`
+const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
-  ${({ buttonType }) => ButtonType[buttonType]}
+  ${({ buttonType = "basic" }) => ButtonType[buttonType]}
   ${({ sizeType }) => Size[sizeType]}
   ${({ fontSizeType }) => FontSize[fontSizeType]}
   ${({ borderType }) => Border[borderType]}

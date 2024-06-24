@@ -1,6 +1,7 @@
 import { LoginIcon } from ".";
-import { GoogleIcon } from "../../../constants/icon";
-// import GoogleIcon from "../../../icons/ic_google.png";
+import GoogleIcon from "../../../icons/ic_google.png";
+import GithubIcon from "../../../icons/ic_github.png";
+import kaKaoIcon from "../../../icons/ic_kakao.png";
 
 export default {
   component: LoginIcon,
@@ -12,14 +13,14 @@ export const GoogleLoginIcon = {
   },
 };
 
-// export const GithubLoginIcon = {
-//   args: {
-//     icon: GithubIcon,
-//   },
-// };
+export const GithubLoginIcon = {
+  args: {
+    icon: GithubIcon,
+  },
+};
 
-// export const kaKaoLoginIcon = {
-//   args: {
-//     icon: kaKaoIcon,
-//   },
-// };
+export const kaKaoLoginIcon = {
+  args: {
+    icon: kaKaoIcon,
+  },
+};

@@ -1,6 +1,10 @@
 import { Button } from "../common/Button";
 
-export const TodayButton = ({ text }) => {
+interface TodayButtonProps {
+  text: string;
+}
+
+export const TodayButton = ({ text }: TodayButtonProps) => {
   return (
     <Button
       sizeType={"smallRectangle"}

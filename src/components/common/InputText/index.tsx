@@ -1,5 +1,14 @@
 import styled, { css } from "styled-components";
 
+interface InputTextProps {
+  sizeType: "small" | "medium" | "large";
+  fontSizeType: "smallFont" | "mediumFont" | "largeFont";
+  borderType: "none" | "square" | "round";
+  placeholder?: string;
+  disabled?: boolean;
+  required?: boolean;
+}
+
 export const InputText = ({
   sizeType,
   fontSizeType,
@@ -8,7 +17,7 @@ export const InputText = ({
   disabled = false,
   required = false,
   ...props
-}) => {
+}: InputTextProps) => {
   return (
     <StyledInputText
       type="text"
@@ -23,7 +32,7 @@ export const InputText = ({
   );
 };
 
-const StyledInputText = styled.input`
+const StyledInputText = styled.input<InputTextProps>`
   padding: 0px 10px;
   ${({ sizeType }) => Size[sizeType]}
   ${({ fontSizeType }) => FontSize[fontSizeType]}

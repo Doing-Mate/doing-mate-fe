@@ -1,11 +1,17 @@
 import styled, { css } from "styled-components";
 
+interface LabelProps {
+  fontSizeType: "smallFont" | "mediumFont" | "largeFont" | "extraLargeFont";
+  backgroundColor?: string;
+  children?: React.ReactNode;
+}
+
 export const Label = ({
   fontSizeType,
   backgroundColor = "transparent",
   children,
   ...props
-}) => {
+}: LabelProps) => {
   return (
     <StyledLabel
       fontSizeType={fontSizeType}
@@ -17,7 +23,7 @@ export const Label = ({
   );
 };
 
-const StyledLabel = styled.label`
+const StyledLabel = styled.label<LabelProps>`
   ${({ fontSizeType }) => FontSize[fontSizeType]}
   ${({ backgroundColor }) =>
     css`
