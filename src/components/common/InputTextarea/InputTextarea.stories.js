@@ -1,4 +1,4 @@
-import { InputTextarea } from "./InputTextarea";
+import { InputTextarea } from ".";
 
 export default {
   component: InputTextarea,

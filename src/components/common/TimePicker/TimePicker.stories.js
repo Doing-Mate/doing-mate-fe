@@ -1,4 +1,4 @@
-import { TimePicker } from "./TimePicker";
+import { TimePicker } from ".";
 
 export default {
   component: TimePicker,

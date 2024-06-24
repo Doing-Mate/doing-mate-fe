@@ -1,4 +1,4 @@
-import { DatePicker } from "./DatePicker";
+import { DatePicker } from ".";
 
 export default {
   component: DatePicker,
