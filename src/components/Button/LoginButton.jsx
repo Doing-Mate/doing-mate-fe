@@ -1,15 +1,10 @@
 import { Button } from "../common/Button";
+import { LoginIcon } from "../Icon/LoginIcon";
 import styled from "styled-components";
 
 const StyledLoginButton = styled(Button)`
   display: grid;
   grid-template-columns: 1fr 4fr;
-`;
-
-const IconImage = styled.img`
-  width: 30px;
-  height: 30px;
-  margin: auto;
 `;
 
 export const LoginButton = ({ icon, text }) => {
@@ -19,7 +14,7 @@ export const LoginButton = ({ icon, text }) => {
       fontSizeType={"largeFont"}
       borderType={"round"}
     >
-      <IconImage src={icon} />
+      <LoginIcon icon={icon} />
       {text}
     </StyledLoginButton>
   );
