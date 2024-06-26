@@ -5,19 +5,31 @@ import styled from "styled-components";
 interface LoginButtonProps {
   icon: string;
   text: string;
+  backgroundColor?: string;
+  fontColor?: string;
+  borderType?: "none" | "square" | "round" | "roundNone";
 }
 
 const StyledLoginButton = styled(Button)`
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 5fr;
+  margin: auto;
 `;
 
-export const LoginButton = ({ icon, text }: LoginButtonProps) => {
+export const LoginButton = ({
+  icon,
+  text,
+  backgroundColor,
+  fontColor,
+  borderType = "roundNone",
+}: LoginButtonProps) => {
   return (
     <StyledLoginButton
       sizeType={"largeRectangle"}
       fontSizeType={"largeFont"}
-      borderType={"round"}
+      borderType={borderType}
+      backgroundColor={backgroundColor}
+      fontColor={fontColor}
     >
       <LoginIcon icon={icon} />
       {text}

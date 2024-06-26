@@ -10,7 +10,9 @@ interface ButtonProps {
     | "mediumSquare"
     | "largeSquare";
   fontSizeType: "smallFont" | "mediumFont" | "largeFont";
-  borderType: "none" | "square" | "round";
+  borderType: "none" | "square" | "round" | "roundNone";
+  backgroundColor?: string;
+  fontColor?: string;
   disabled?: boolean;
   children: React.ReactNode;
 }
@@ -20,6 +22,8 @@ export const Button = ({
   sizeType,
   fontSizeType,
   borderType,
+  backgroundColor = "transparent",
+  fontColor = "black",
   disabled = false,
   children,
   ...props
@@ -30,6 +34,8 @@ export const Button = ({
       sizeType={sizeType}
       fontSizeType={fontSizeType}
       borderType={borderType}
+      backgroundColor={backgroundColor}
+      fontColor={fontColor}
       disabled={disabled}
       {...props}
     >
@@ -44,6 +50,14 @@ const StyledButton = styled.button<ButtonProps>`
   ${({ sizeType }) => Size[sizeType]}
   ${({ fontSizeType }) => FontSize[fontSizeType]}
   ${({ borderType }) => Border[borderType]}
+  ${({ backgroundColor }) =>
+    css`
+      background-color: ${backgroundColor};
+    `}
+  ${({ fontColor }) =>
+    css`
+      color: ${fontColor};
+    `}
 `;
 
 const BasicButton = css`
@@ -74,8 +88,8 @@ const MediumRectangleSize = css`
 `;
 
 const LargeRectangleSize = css`
-  width: 260px;
-  height: 55px;
+  width: 360px;
+  height: 65.5px;
 `;
 
 const SmallSquareSize = css`
@@ -111,7 +125,7 @@ const MediumFontSize = css`
 `;
 
 const LargeFontSize = css`
-  font-size: 16px;
+  font-size: 18px;
 `;
 
 const FontSize = {
@@ -130,11 +144,17 @@ const SquareType = css`
 
 const RoundType = css`
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
+`;
+
+const RoundNoneType = css`
+  border: 0px;
+  border-radius: 15px;
 `;
 
 const Border = {
   none: NoneType,
   square: SquareType,
   round: RoundType,
+  roundNone: RoundNoneType,
 };

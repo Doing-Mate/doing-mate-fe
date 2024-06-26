@@ -36,7 +36,7 @@ const SmallFontSize = css`
 `;
 
 const MediumFontSize = css`
-  font-size: 14px;
+  font-size: 15px;
 `;
 
 const LargeFontSize = css`
