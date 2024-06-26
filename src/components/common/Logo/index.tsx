@@ -27,8 +27,8 @@ const mainLogo = css`
 `;
 
 const loginLogo = css`
-  width: 250px;
-  height: 250px;
+  width: 285px;
+  height: 150px;
 `;
 
 const LogoType = {

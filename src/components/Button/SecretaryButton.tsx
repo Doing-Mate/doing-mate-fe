@@ -5,10 +5,6 @@ interface SecretaryButtonProps {
   icon: string;
 }
 
-const TransparentButton = styled(Button)`
-  background-color: transparent;
-`;
-
 const IconImage = styled.img`
   width: inherit;
   height: inherit;
@@ -17,12 +13,12 @@ const IconImage = styled.img`
 
 export const SecretaryButton = ({ icon }: SecretaryButtonProps) => {
   return (
-    <TransparentButton
+    <Button
       sizeType={"largeSquare"}
       fontSizeType={"largeFont"}
       borderType={"none"}
     >
       <IconImage src={icon} />
-    </TransparentButton>
+    </Button>
   );
 };

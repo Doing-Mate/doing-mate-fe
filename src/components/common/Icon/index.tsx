@@ -22,8 +22,8 @@ const StyledIcon = styled.img<StyledIconProps>`
 `;
 
 const SmallSize = css`
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 `;
 
 const MediumSize = css`

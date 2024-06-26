@@ -48,6 +48,11 @@ const Main = styled.main`
   align-items: center;
   justify-content: center;
   width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(235, 186, 199, 1) 0%,
+    rgba(189, 211, 246, 1) 100%
+  );
 `;
 
 export default Layout;

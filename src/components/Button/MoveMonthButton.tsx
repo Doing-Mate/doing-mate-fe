@@ -5,10 +5,6 @@ interface MoveMonthButtonProps {
   icon: string;
 }
 
-const TransparentButton = styled(Button)`
-  background-color: transparent;
-`;
-
 const IconImage = styled.img`
   width: inherit;
   height: inherit;
@@ -17,12 +13,12 @@ const IconImage = styled.img`
 
 export const MoveMonthButton = ({ icon }: MoveMonthButtonProps) => {
   return (
-    <TransparentButton
+    <Button
       sizeType={"smallSquare"}
       fontSizeType={"smallFont"}
       borderType={"none"}
     >
       <IconImage src={icon} />
-    </TransparentButton>
+    </Button>
   );
 };
