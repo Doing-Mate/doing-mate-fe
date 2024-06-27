@@ -7,6 +7,7 @@ interface TitleLabelProps {
 
 const StyledLabel = styled(Label)`
   font-weight: bold;
+  margin-bottom: 15px;
 `;
 
 export const TitleLabel = ({ text }: TitleLabelProps) => {

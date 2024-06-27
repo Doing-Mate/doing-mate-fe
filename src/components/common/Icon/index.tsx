@@ -22,13 +22,13 @@ const StyledIcon = styled.img<StyledIconProps>`
 `;
 
 const SmallSize = css`
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
 `;
 
 const MediumSize = css`
-  width: 45px;
-  height: 45px;
+  width: 40px;
+  height: 40px;
 `;
 
 const LargeSize = css`

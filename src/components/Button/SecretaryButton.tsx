@@ -11,14 +11,19 @@ const IconImage = styled.img`
   margin: auto;
 `;
 
+const StyledSecretaryButton = styled(Button)`
+  margin: 15px 50px;
+  float: right;
+`;
+
 export const SecretaryButton = ({ icon }: SecretaryButtonProps) => {
   return (
-    <Button
+    <StyledSecretaryButton
       sizeType={"largeSquare"}
       fontSizeType={"largeFont"}
       borderType={"none"}
     >
       <IconImage src={icon} />
-    </Button>
+    </StyledSecretaryButton>
   );
 };

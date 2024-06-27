@@ -44,7 +44,7 @@ const LargeFontSize = css`
 `;
 
 const ExtraLargeFontSize = css`
-  font-size: 30px;
+  font-size: 20px;
 `;
 
 const FontSize = {

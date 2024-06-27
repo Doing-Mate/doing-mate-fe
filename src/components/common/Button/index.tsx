@@ -103,8 +103,8 @@ const MediumSquareSize = css`
 `;
 
 const LargeSquareSize = css`
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
 `;
 
 const Size = {
