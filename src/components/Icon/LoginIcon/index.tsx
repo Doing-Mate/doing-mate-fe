@@ -5,5 +5,5 @@ interface LoginIconProps {
 }
 
 export const LoginIcon = ({ icon }: LoginIconProps) => {
-  return <Icon sizeType={"small"} icon={icon} />;
+  return <Icon sizeType={"medium"} icon={icon} />;
 };

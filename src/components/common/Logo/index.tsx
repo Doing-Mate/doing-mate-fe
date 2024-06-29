@@ -22,8 +22,8 @@ const StyledLogo = styled.img<StyledLogoProps>`
 `;
 
 const mainLogo = css`
-  width: 400px;
-  height: 50px;
+  width: 290px;
+  height: 40px;
 `;
 
 const loginLogo = css`

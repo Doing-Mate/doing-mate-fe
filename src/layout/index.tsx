@@ -25,6 +25,7 @@ const Container = styled.div`
   height: 100%;
   min-width: 1000px;
   margin: 0 auto;
+  font-family: "WantedSansRegular";
 `;
 
 const Header = styled.header`
@@ -41,6 +42,7 @@ const SideBar = styled.nav`
   display: flex;
   width: 250px;
   height: 100%;
+  margin-top: 10px;
 `;
 
 const Main = styled.main`

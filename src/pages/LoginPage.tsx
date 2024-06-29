@@ -8,7 +8,7 @@ import GithubIcon from "../icons/ic_github.png";
 import kaKaoIcon from "../icons/ic_kakao.png";
 import LoginLogo from "../logos/logo_login.png";
 
-const LoginPage = () => {
+export const LoginPage = () => {
   return (
     <Layout>
       <StyledLoginDiv>
@@ -52,5 +52,3 @@ const StyledLoginDiv = styled.div`
 const LoginLabel = styled(Label)`
   margin: 5px auto;
 `;
-
-export default LoginPage;

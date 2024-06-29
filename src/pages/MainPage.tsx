@@ -1,9 +1,23 @@
-const MainPage = () => {
+import Layout from "../layout";
+import styled from "styled-components";
+import { Header } from "../components/header/Header";
+import { SideBar } from "../components/sidebar/SideBar";
+import { Calendar } from "../components/common/Calendar";
+
+export const MainPage = () => {
   return (
-    <>
-      <h1>메인페이지 입니다.</h1>
-    </>
+    <Layout header={<Header />} sideBar={<SideBar />}>
+      <StyledMainDiv>
+        <Calendar />
+      </StyledMainDiv>
+    </Layout>
   );
 };
 
-export default MainPage;
+const StyledMainDiv = styled.div`
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+`;

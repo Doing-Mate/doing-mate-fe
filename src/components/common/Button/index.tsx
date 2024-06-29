@@ -93,8 +93,8 @@ const LargeRectangleSize = css`
 `;
 
 const SmallSquareSize = css`
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
 `;
 
 const MediumSquareSize = css`
@@ -103,8 +103,8 @@ const MediumSquareSize = css`
 `;
 
 const LargeSquareSize = css`
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
 `;
 
 const Size = {

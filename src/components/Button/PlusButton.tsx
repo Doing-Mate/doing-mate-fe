@@ -1,7 +1,7 @@
 import { Button } from "../common/Button";
 import styled from "styled-components";
 
-interface SecretaryButtonProps {
+interface PlusButtonProps {
   icon: string;
 }
 
@@ -11,19 +11,19 @@ const IconImage = styled.img`
   margin: auto;
 `;
 
-const StyledSecretaryButton = styled(Button)`
-  margin: 15px 50px;
+const StyledPlusButton = styled(Button)`
+  margin-right: 5px;
   float: right;
 `;
 
-export const SecretaryButton = ({ icon }: SecretaryButtonProps) => {
+export const PlusButton = ({ icon }: PlusButtonProps) => {
   return (
-    <StyledSecretaryButton
-      sizeType={"largeSquare"}
-      fontSizeType={"largeFont"}
+    <StyledPlusButton
+      sizeType={"smallSquare"}
+      fontSizeType={"smallFont"}
       borderType={"none"}
     >
       <IconImage src={icon} />
-    </StyledSecretaryButton>
+    </StyledPlusButton>
   );
 };
