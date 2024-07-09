@@ -1,5 +1,5 @@
 import { PlusButton } from "./PlusButton";
-import PlusIcon from "../../icons/ic_plus.png";
+import PlusIcon from "../../assets/icons/ic_plus.png";
 
 export default {
   component: PlusButton,

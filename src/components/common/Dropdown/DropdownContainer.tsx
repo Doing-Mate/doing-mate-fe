@@ -34,9 +34,9 @@ export const DropdownContainer = ({
         buttonType="dropdown"
         sizeType={"mediumRectangle"}
         fontSizeType={"smallFont"}
-        borderType={"square"}
+        borderType={"modal"}
       >
-        <StyledSelectedItem>{selectedItem}</StyledSelectedItem>
+        <label>{selectedItem}</label>
         <label>{isDropdownView ? "▲" : "▼"}</label>
       </Button>
       {isDropdownView && (
@@ -47,9 +47,6 @@ export const DropdownContainer = ({
 };
 
 const StyledDropdownContainer = styled.div`
-  width: fit-content;
-`;
-
-const StyledSelectedItem = styled.label`
-  max-width: 60px;
+  width: 150px;
+  margin-right: 5px;
 `;

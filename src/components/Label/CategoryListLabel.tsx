@@ -1,12 +1,14 @@
 import { Label } from "../common/Label";
 import styled from "styled-components";
 
-interface MonthLabelProps {
+interface CategoryListLabelProps {
   text: string;
 }
+
 const StyledLabel = styled(Label)`
-  font-weight: bold;
+  margin: auto;
 `;
-export const MonthLabel = ({ text }: MonthLabelProps) => {
+
+export const CategoryListLabel = ({ text }: CategoryListLabelProps) => {
   return <StyledLabel fontSizeType={"largeFont"}>{text}</StyledLabel>;
 };

@@ -1,7 +1,7 @@
 import { Label } from "../common/Label";
 import styled from "styled-components";
 
-interface TitleLabelProps {
+interface CategoryTitleLabelProps {
   text: string;
 }
 
@@ -11,6 +11,6 @@ const StyledLabel = styled(Label)`
   margin-bottom: 15px;
 `;
 
-export const TitleLabel = ({ text }: TitleLabelProps) => {
+export const CategoryTitleLabel = ({ text }: CategoryTitleLabelProps) => {
   return <StyledLabel fontSizeType={"extraLargeFont"}>{text}</StyledLabel>;
 };

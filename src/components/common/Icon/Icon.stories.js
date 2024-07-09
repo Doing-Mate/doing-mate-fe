@@ -1,5 +1,5 @@
 import { Icon } from ".";
-import GoogleIcon from "../../../icons/ic_google.png";
+import GoogleIcon from "../../../assets/icons/ic_google.png";
 
 export default {
   component: Icon,

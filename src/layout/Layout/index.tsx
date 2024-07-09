@@ -50,6 +50,8 @@ const Main = styled.main`
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 10px;
+  z-index: 0;
   background: linear-gradient(
     0deg,
     rgba(235, 186, 199, 1) 0%,

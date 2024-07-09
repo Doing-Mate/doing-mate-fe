@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { Logo } from "../common/Logo";
-import { SecretaryButton } from "../Button/SecretaryButton";
-import MainLogo from "../../logos/logo_main.png";
-import UserIcon from "../../icons/ic_user.png";
+import { Logo } from "../../components/common/Logo";
+import { SecretaryButton } from "../../components/Button/SecretaryButton";
+import MainLogo from "../../assets/logos/logo_main.png";
+import UserIcon from "../../assets/icons/ic_user.png";
 
 export const Header = () => {
   return (

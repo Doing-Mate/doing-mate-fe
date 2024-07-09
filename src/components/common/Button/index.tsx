@@ -10,10 +10,11 @@ interface ButtonProps {
     | "mediumSquare"
     | "largeSquare";
   fontSizeType: "smallFont" | "mediumFont" | "largeFont";
-  borderType: "none" | "square" | "round" | "roundNone";
+  borderType: "none" | "square" | "round" | "roundNone" | "modal";
   backgroundColor?: string;
   fontColor?: string;
   disabled?: boolean;
+  onClick?: () => void;
   children: React.ReactNode;
 }
 
@@ -78,13 +79,13 @@ const ButtonType = {
 };
 
 const SmallRectangleSize = css`
-  width: 60px;
-  height: 30px;
+  width: 110px;
+  height: 35px;
 `;
 
 const MediumRectangleSize = css`
-  width: 100px;
-  height: 33px;
+  width: 150px;
+  height: 35px;
 `;
 
 const LargeRectangleSize = css`
@@ -117,7 +118,7 @@ const Size = {
 };
 
 const SmallFontSize = css`
-  font-size: 12px;
+  font-size: 13px;
 `;
 
 const MediumFontSize = css`
@@ -152,9 +153,15 @@ const RoundNoneType = css`
   border-radius: 15px;
 `;
 
+const ModalType = css`
+  border: 1px solid black;
+  border-radius: 5px;
+`;
+
 const Border = {
   none: NoneType,
   square: SquareType,
   round: RoundType,
   roundNone: RoundNoneType,
+  modal: ModalType,
 };

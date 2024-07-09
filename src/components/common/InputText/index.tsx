@@ -7,6 +7,7 @@ interface InputTextProps {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
+  value?: string;
 }
 
 export const InputText = ({
@@ -16,6 +17,7 @@ export const InputText = ({
   placeholder,
   disabled = false,
   required = false,
+  value,
   ...props
 }: InputTextProps) => {
   return (
@@ -27,6 +29,7 @@ export const InputText = ({
       placeholder={placeholder}
       disabled={disabled}
       required={required}
+      value={value}
       {...props}
     ></StyledInputText>
   );
@@ -40,18 +43,15 @@ const StyledInputText = styled.input<InputTextProps>`
 `;
 
 const SmallSize = css`
-  width: 150px;
   height: 30px;
 `;
 
 const MediumSize = css`
-  width: 250px;
-  height: 30px;
+  height: 35px;
 `;
 
 const LargeSize = css`
-  width: 350px;
-  height: 30px;
+  height: 50px;
 `;
 
 const Size = {
