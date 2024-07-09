@@ -13,7 +13,7 @@ const IconImage = styled.img`
 `;
 
 const StyledCloseButton = styled(Button)`
-  margin: 14px 15px;
+  margin: 20px;
   float: right;
 `;
 

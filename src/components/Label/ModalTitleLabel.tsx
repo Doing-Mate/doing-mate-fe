@@ -6,7 +6,7 @@ interface ModalTitleLabelProps {
 }
 const StyledLabel = styled(Label)`
   font-weight: bold;
-  margin: 16px 20px;
+  margin: 22px 25px;
 `;
 
 export const ModalTitleLabel = ({ text }: ModalTitleLabelProps) => {

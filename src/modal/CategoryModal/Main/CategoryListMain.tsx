@@ -51,7 +51,7 @@ const CategoryListItem = styled.li`
   align-items: center;
   margin: 5px;
   border: 1px solid #cac8c8;
-  border-radius: 5px;
+  border-radius: 7px;
   &:hover {
     background: #8d8d8d1f;
     cursor: pointer;

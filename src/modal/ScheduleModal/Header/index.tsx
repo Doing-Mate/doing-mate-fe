@@ -26,7 +26,7 @@ export const ScheduleModalHeader = ({ text }: ModalHeaderProps) => {
 const StyledHeader = styled.div`
   height: 100%;
   position: relative;
-  border-radius: 0 0 10px 10px;
+  border-radius: 10px;
   box-shadow: 0px 5px 4px #00000042;
   background-color: ${theme.colors.primary};
 `;
