@@ -1,12 +1,12 @@
-import Layout from "../layout";
+import Layout from "../layout/Layout";
 import styled from "styled-components";
 import { Label } from "../components/common/Label";
 import { LoginButton } from "../components/Button/LoginButton";
 import { Logo } from "../components/common/Logo";
-import GoogleIcon from "../icons/ic_google.png";
-import GithubIcon from "../icons/ic_github.png";
-import kaKaoIcon from "../icons/ic_kakao.png";
-import LoginLogo from "../logos/logo_login.png";
+import GoogleIcon from "../assets/icons/ic_google.png";
+import GithubIcon from "../assets/icons/ic_github.png";
+import kaKaoIcon from "../assets/icons/ic_kakao.png";
+import LoginLogo from "../assets/logos/logo_login.png";
 
 export const LoginPage = () => {
   return (

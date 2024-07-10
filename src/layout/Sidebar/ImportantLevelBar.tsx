@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import { TitleLabel } from "../Label/TitleLabel";
-import { Checkbox } from "../common/Checkbox";
-import { Icon } from "../common/Icon";
-import StarIcon from "../../icons/ic_star.png";
+import { CategoryTitleLabel } from "../../components/Label/CategoryTitleLabel";
+import { Checkbox } from "../../components/common/Checkbox";
+import { Icon } from "../../components/common/Icon";
+import StarIcon from "../../assets/icons/ic_star.png";
 
 export const ImportantLevelBar = () => {
   return (
     <ImportantLevelBarDiv>
-      <TitleLabel text="중요도" />
+      <CategoryTitleLabel text="중요도" />
       <ImportantLevelItem num={5} />
       <ImportantLevelItem num={4} />
       <ImportantLevelItem num={3} />

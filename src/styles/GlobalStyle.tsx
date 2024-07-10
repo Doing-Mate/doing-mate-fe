@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
-import WantedSansRegular from "../fonts/WantedSans-Regular.woff2";
+import WantedSansRegular from "../assets/fonts/WantedSans-Regular.woff2";
 
 const GlobalStyle = createGlobalStyle`
     ${reset}

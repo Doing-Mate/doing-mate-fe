@@ -5,5 +5,5 @@ export default {
 };
 
 export const TodoTitleInput = {
-  args: {},
+  args: { text: "생일" },
 };

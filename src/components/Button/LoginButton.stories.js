@@ -1,7 +1,7 @@
 import { LoginButton } from "./LoginButton";
-import GoogleIcon from "../../icons/ic_google.png";
-import GithubIcon from "../../icons/ic_github.png";
-import kaKaoIcon from "../../icons/ic_kakao.png";
+import GoogleIcon from "../../assets/icons/ic_google.png";
+import GithubIcon from "../../assets/icons/ic_github.png";
+import kaKaoIcon from "../../assets/icons/ic_kakao.png";
 
 export default {
   component: LoginButton,

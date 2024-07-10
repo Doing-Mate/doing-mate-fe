@@ -12,6 +12,30 @@ export const DatePicker = () => {
         format="YYYY. MM. DD. ddd"
         value={startDate}
         onChange={(date) => setStartDate(date)}
+        sx={{
+          height: "fit-content",
+          ".MuiOutlinedInput-root": {
+            fontFamily: "inherit",
+            fontSize: "small",
+            width: 150,
+            paddingRight: 0,
+            marginRight: "5px",
+          },
+          ".MuiOutlinedInput-root input": {
+            padding: "8.5px 0px 8.5px 10px",
+          },
+          ".MuiInputAdornment-root": {
+            paddingRight: "10px",
+            marginLeft: 0,
+          },
+        }}
+        slotProps={{
+          openPickerIcon: { fontSize: "small" },
+          textField: {
+            variant: "outlined",
+            size: "small",
+          },
+        }}
       />
     </LocalizationProvider>
   );

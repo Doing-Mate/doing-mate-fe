@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 interface PlusButtonProps {
   icon: string;
+  onClick: () => void;
 }
 
 const IconImage = styled.img`
@@ -16,12 +17,13 @@ const StyledPlusButton = styled(Button)`
   float: right;
 `;
 
-export const PlusButton = ({ icon }: PlusButtonProps) => {
+export const PlusButton = ({ icon, onClick }: PlusButtonProps) => {
   return (
     <StyledPlusButton
       sizeType={"smallSquare"}
       fontSizeType={"smallFont"}
       borderType={"none"}
+      onClick={onClick}
     >
       <IconImage src={icon} />
     </StyledPlusButton>

@@ -1,6 +1,6 @@
 import { MoveMonthButton } from "./MoveMonthButton";
-import LeftIcon from "../../icons/ic_left.png";
-import RightIcon from "../../icons/ic_right.png";
+import LeftIcon from "../../assets/icons/ic_left.png";
+import RightIcon from "../../assets/icons/ic_right.png";
 
 export default {
   component: MoveMonthButton,

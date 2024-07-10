@@ -7,6 +7,7 @@ interface InputTextareaProps {
   placeholder?: string;
   disabled?: boolean;
   required?: boolean;
+  value?: string;
 }
 
 export const InputTextarea = ({
@@ -16,6 +17,7 @@ export const InputTextarea = ({
   placeholder,
   disabled = false,
   required = false,
+  value,
   ...props
 }: InputTextareaProps) => {
   return (
@@ -26,6 +28,7 @@ export const InputTextarea = ({
       placeholder={placeholder}
       disabled={disabled}
       required={required}
+      value={value}
       {...props}
     ></StyledInputTextarea>
   );
@@ -40,17 +43,14 @@ const StyledInputTextarea = styled.textarea<InputTextareaProps>`
 `;
 
 const SmallSize = css`
-  width: 200px;
   height: 30px;
 `;
 
 const MediumSize = css`
-  width: 300px;
   height: 200px;
 `;
 
 const LargeSize = css`
-  width: 350px;
   height: 200px;
 `;
 
@@ -61,11 +61,11 @@ const Size = {
 };
 
 const SmallFontSize = css`
-  font-size: 12px;
+  font-size: 13px;
 `;
 
 const MediumFontSize = css`
-  font-size: 13px;
+  font-size: 14px;
 `;
 
 const LargeFontSize = css`

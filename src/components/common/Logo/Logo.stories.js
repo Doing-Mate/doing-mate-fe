@@ -1,6 +1,6 @@
 import { Logo } from "./";
-import MainLogo from "../../../logos/logo_main.png";
-import LoginLogo from "../../../logos/logo_login.png";
+import MainLogo from "../../../assets/logos/logo_main.png";
+import LoginLogo from "../../../assets/logos/logo_login.png";
 
 export default {
   component: Logo,

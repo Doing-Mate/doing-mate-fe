@@ -13,6 +13,7 @@ export const Checkbox = ({ colorType, text, ...props }: CheckboxProps) => {
       control={
         <MuiCheckbox
           disableRipple
+          defaultChecked
           sx={{
             color: colorType,
             "&.Mui-checked": {

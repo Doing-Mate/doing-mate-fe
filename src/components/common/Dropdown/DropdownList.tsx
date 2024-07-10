@@ -23,10 +23,14 @@ export const DropdownList = ({
 };
 
 const StyledDropdownList = styled.ul`
+  position: fixed;
+  width: inherit;
   cursor: pointer;
   padding: 0px;
   text-align: center;
   border: 1px solid black;
+  z-index: 1;
+  background-color: white;
 `;
 
 const StyledDropdownListItem = styled.li`

@@ -4,18 +4,21 @@ interface LabelProps {
   fontSizeType: "smallFont" | "mediumFont" | "largeFont" | "extraLargeFont";
   backgroundColor?: string;
   children?: React.ReactNode;
+  onClick?: () => void;
 }
 
 export const Label = ({
   fontSizeType,
   backgroundColor = "transparent",
   children,
+  onClick,
   ...props
 }: LabelProps) => {
   return (
     <StyledLabel
       fontSizeType={fontSizeType}
       backgroundColor={backgroundColor}
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -32,7 +35,7 @@ const StyledLabel = styled.label<LabelProps>`
 `;
 
 const SmallFontSize = css`
-  font-size: 12px;
+  font-size: 13px;
 `;
 
 const MediumFontSize = css`
