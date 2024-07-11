@@ -4,12 +4,21 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker as MuiDatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs, { Dayjs } from "dayjs";
 
-export const DatePicker = () => {
+interface DatePickerProps {
+  dataDate?: string;
+}
+
+export const DatePicker = ({ dataDate }: DatePickerProps) => {
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
+  // console.log(dataDate);
+  // dataDate !== undefined
+  //   ? () => setStartDate(dayjs(dataDate.split(" ")[0]))
+  //   : () => setStartDate(dayjs());
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MuiDatePicker
         format="YYYY. MM. DD. ddd"
+        // value={dataDate !== undefined ? dayjs(dataDate) : dayjs()}
         value={startDate}
         onChange={(date) => setStartDate(date)}
         sx={{

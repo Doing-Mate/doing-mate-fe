@@ -21,6 +21,7 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
       : footerData[1] === undefined
       ? [
           <CRUDButton
+            key="footerBtn_01"
             text={footerData[0].text}
             colorType={theme.colors.secondary}
             hoverColorType={"#e498ac"}
@@ -29,12 +30,14 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
         ]
       : [
           <CRUDButton
+            key="footerBtn_01"
             text={footerData[0].text}
             colorType={theme.colors.secondary}
             hoverColorType={"#e498ac"}
             onClick={footerData[0].onClick}
           />,
           <CRUDButton
+            key="footerBtn_02"
             text={footerData[1].text}
             colorType={theme.colors.primary}
             hoverColorType={"#92b5ec"}
@@ -46,7 +49,7 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
       header={<ScheduleModalHeader text={mode.headerText} />}
       footer={<ScheduleModalFooter children={mode.footerButtons} />}
     >
-      <ScheduleModalMain disabled={mode.mainDisabled} />
+      <ScheduleModalMain disabled={mode.mainDisabled} data={mode.data} />
       {footerData[0] !== undefined && mode.alert && (
         <ScheduleAlertDialog
           Open={mode.alert}

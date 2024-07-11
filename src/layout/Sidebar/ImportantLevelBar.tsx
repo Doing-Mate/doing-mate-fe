@@ -6,7 +6,7 @@ import StarIcon from "../../assets/icons/ic_star.png";
 
 export const ImportantLevelBar = () => {
   return (
-    <ImportantLevelBarDiv>
+    <ImportantLevelBarDiv key={"leverbar"}>
       <CategoryTitleLabel text="중요도" />
       <ImportantLevelItem num={5} />
       <ImportantLevelItem num={4} />
@@ -24,7 +24,7 @@ interface StarLevelProps {
 const ImportantLevelItem = ({ num }: StarLevelProps) => {
   return (
     <ImportantLevelItemDiv>
-      <Checkbox />
+      <Checkbox key={"starLevel_" + num} />
       <StarLevel num={num} />
     </ImportantLevelItemDiv>
   );
@@ -32,7 +32,7 @@ const ImportantLevelItem = ({ num }: StarLevelProps) => {
 
 const StarLevel = ({ num }: StarLevelProps) => {
   return (
-    <StarLevelDiv>
+    <StarLevelDiv key={"star" + num}>
       {new Array(num).fill(0).map(() => (
         <Icon sizeType="small" icon={StarIcon} />
       ))}

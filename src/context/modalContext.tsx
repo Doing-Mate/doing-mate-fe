@@ -16,11 +16,6 @@ interface modalModeType {
   setModalMode: (modalMode: ModalProps) => void;
 }
 
-// interface modalModeType {
-//   modalMode: ModalProps;
-//   setModalMode: (modalMode: ModalProps) => void;
-// }
-
 const ModalModeContext = createContext<modalModeType>({
   modalMode: BasicComponent,
   setModalMode: () => {},
@@ -34,11 +29,11 @@ const ModalContextProvider = ({ children }: ModalContextProviderProps) => {
   const [modalMode, setModalMode] = useState<ModalProps>(BasicComponent);
 
   return (
-    <ModalStateContext.Provider value={{ onModal, setOnModal }}>
-      <ModalModeContext.Provider value={{ modalMode, setModalMode }}>
+    <ModalModeContext.Provider value={{ modalMode, setModalMode }}>
+      <ModalStateContext.Provider value={{ onModal, setOnModal }}>
         {children}
-      </ModalModeContext.Provider>
-    </ModalStateContext.Provider>
+      </ModalStateContext.Provider>
+    </ModalModeContext.Provider>
   );
 };
 

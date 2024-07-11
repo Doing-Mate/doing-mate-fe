@@ -1,3 +1,5 @@
+import { ScheduleDataProps, BasicScheduleData } from "./dataInterface";
+
 export interface ModalType {
   modelType: "schedule" | "category";
 }
@@ -13,7 +15,7 @@ export interface ModalProps {
   footerButtons: React.ReactNode[] | null;
   mainDisabled: boolean;
   alert: boolean;
-  data?: object;
+  data?: ScheduleDataProps;
 }
 
 const BasicComponent: ModalProps = {
@@ -23,7 +25,7 @@ const BasicComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
+  data: BasicScheduleData,
 };
 
 const ScheduleDetailComponent: ModalProps = {
@@ -33,7 +35,7 @@ const ScheduleDetailComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: false,
   alert: false,
-  data: [],
+  data: BasicScheduleData,
 };
 
 const ScheduleModifyComponent: ModalProps = {
@@ -43,7 +45,7 @@ const ScheduleModifyComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
+  data: BasicScheduleData,
 };
 
 const ScheduleAddComponent: ModalProps = {
@@ -53,7 +55,7 @@ const ScheduleAddComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
+  data: BasicScheduleData,
 };
 
 const ScheduleDeleteComponent: ModalProps = {
@@ -63,7 +65,7 @@ const ScheduleDeleteComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: false,
   alert: true,
-  data: [],
+  data: BasicScheduleData,
 };
 
 const CategoryListComponent: ModalProps = {
@@ -73,7 +75,7 @@ const CategoryListComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
+  data: BasicScheduleData,
 };
 
 const CategoryItemComponent: ModalProps = {
@@ -83,7 +85,7 @@ const CategoryItemComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
+  data: BasicScheduleData,
 };
 
 const CategoryDeleteComponent: ModalProps = {
@@ -93,7 +95,7 @@ const CategoryDeleteComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: true,
-  data: [],
+  data: BasicScheduleData,
 };
 
 export {

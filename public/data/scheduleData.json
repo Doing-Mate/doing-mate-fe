@@ -1,0 +1,57 @@
+[
+  {
+    "id": "20240704_01",
+    "category_id": "cg_01",
+    "title": "미니 생일",
+    "start": "20240704 00:00",
+    "end": "20240704 24:00",
+    "repetition": "none",
+    "importance": 5,
+    "place": "",
+    "comment": ""
+  },
+  {
+    "id": "20240712_01",
+    "category_id": "cg_02",
+    "title": "야구",
+    "start": "20240712 19:00",
+    "end": "20240712 21:00",
+    "repetition": "none",
+    "importance": 2,
+    "place": "",
+    "comment": ""
+  },
+  {
+    "id": "20240722_01",
+    "category_id": "cg_02",
+    "title": "도서관 데이트",
+    "start": "20240722 09:30",
+    "end": "20240722 12:59",
+    "repetition": "none",
+    "importance": 1,
+    "place": "월평도서관",
+    "comment": ""
+  },
+  {
+    "id": "20240722_02",
+    "category_id": "cg_02",
+    "title": "지렁과 저녁약속",
+    "start": "20240722 18:00",
+    "end": "20240722 22:00",
+    "repetition": "none",
+    "importance": 5,
+    "place": "미니없는 미니집",
+    "comment": ""
+  },
+  {
+    "id": "20240717_01",
+    "category_id": "cg_02",
+    "title": "다같이 대천여행",
+    "start": "20240717 12:00",
+    "end": "20240719 13:00",
+    "repetition": "none",
+    "importance": 5,
+    "place": "대천",
+    "comment": "메모입니둥"
+  }
+]

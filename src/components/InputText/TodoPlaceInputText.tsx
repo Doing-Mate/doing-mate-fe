@@ -5,13 +5,18 @@ const StyledTodoPlaceInputText = styled(InputText)`
   width: 100%;
 `;
 
-export const TodoPlaceInputText = () => {
+interface TodoPlaceInputTextProps {
+  text?: string;
+}
+
+export const TodoPlaceInputText = ({ text }: TodoPlaceInputTextProps) => {
   return (
     <StyledTodoPlaceInputText
       sizeType={"medium"}
       fontSizeType={"smallFont"}
       borderType={"round"}
       placeholder="장소 입력"
+      value={text}
     />
   );
 };

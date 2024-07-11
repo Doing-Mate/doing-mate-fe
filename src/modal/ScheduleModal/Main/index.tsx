@@ -6,6 +6,7 @@ import { TimePicker } from "../../../components/common/TimePicker";
 import { SmallTextLabel } from "../../../components/Label/SmallTextLabel";
 import { TodoPlaceInputText } from "../../../components/InputText/TodoPlaceInputText";
 import { TodoMemoInputTextarea } from "../../../components/InputTextarea/TodoMemoInputTextarea";
+import { ScheduleDataProps } from "../../../context/dataInterface";
 
 const Category_TEXT = {
   NONE: "기본",
@@ -25,9 +26,10 @@ const Repetition_TEXT = {
 
 interface ModalContentsProps {
   disabled: boolean;
+  data: ScheduleDataProps | undefined;
 }
 
-export const ScheduleModalMain = ({ disabled }: ModalContentsProps) => {
+export const ScheduleModalMain = ({ disabled, data }: ModalContentsProps) => {
   return (
     <StyledContents disabled={disabled}>
       <ContentsItem>
@@ -35,10 +37,10 @@ export const ScheduleModalMain = ({ disabled }: ModalContentsProps) => {
           title="카테고리"
           dataList={Category_TEXT}
         ></DropdownContainer>
-        <TodoTitleInputText />
+        <TodoTitleInputText text={data?.title} />
       </ContentsItem>
       <ContentsItem>
-        <DatePicker />
+        <DatePicker dataDate={data?.start?.split(" ")[0]} />
         <TimePicker />
         <SmallTextLabel text="~" />
         <DatePicker />
@@ -51,16 +53,16 @@ export const ScheduleModalMain = ({ disabled }: ModalContentsProps) => {
         ></DropdownContainer>
       </ContentsItem>
       <ContentsItem>
-        <TodoPlaceInputText />
+        <TodoPlaceInputText text={data?.place} />
       </ContentsItem>
       <ContentsItem>
-        <TodoMemoInputTextarea />
+        <TodoMemoInputTextarea text={data?.comment} />
       </ContentsItem>
     </StyledContents>
   );
 };
 
-type ModalContentsPropsWithoutData = Omit<ModalContentsProps, "title">;
+type ModalContentsPropsWithoutData = Omit<ModalContentsProps, "data">;
 
 const StyledContents = styled.div<ModalContentsPropsWithoutData>`
   width: 100%;

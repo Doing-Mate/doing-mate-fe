@@ -19,12 +19,14 @@ export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
     mode.propsType === "item"
       ? [
           <CRUDButton
+            key="footerBtn_01"
             text={footerData[0].text}
             colorType={theme.colors.secondary}
             hoverColorType={"#e498ac"}
             onClick={footerData[0].onClick}
           />,
           <CRUDButton
+            key="footerBtn_02"
             text={footerData[1].text}
             colorType={theme.colors.primary}
             hoverColorType={"#92b5ec"}
