@@ -1,11 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker as MuiTimePicker } from "@mui/x-date-pickers/TimePicker/TimePicker";
 import dayjs, { Dayjs } from "dayjs";
 
-export const TimePicker = () => {
-  const [startTime, setStartTime] = useState<Dayjs | null>(dayjs());
+interface TimePickerProps {
+  dataTime?: string;
+}
+
+export const TimePicker = ({ dataTime }: TimePickerProps) => {
+  const [startTime, setStartTime] = useState<Dayjs | null>();
+
+  useEffect(() => {
+    dataTime !== undefined
+      ? setStartTime(dayjs(dataTime))
+      : setStartTime(dayjs());
+  }, []);
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MuiTimePicker

@@ -4,6 +4,7 @@ import { TodoTitleInputText } from "../../../components/InputText/TodoTitleInput
 import { DatePicker } from "../../../components/common/DatePicker";
 import { TimePicker } from "../../../components/common/TimePicker";
 import { SmallTextLabel } from "../../../components/Label/SmallTextLabel";
+import { StarRating } from "../../../components/common/StarRating";
 import { TodoPlaceInputText } from "../../../components/InputText/TodoPlaceInputText";
 import { TodoMemoInputTextarea } from "../../../components/InputTextarea/TodoMemoInputTextarea";
 import { ScheduleDataProps } from "../../../context/dataInterface";
@@ -34,23 +35,26 @@ export const ScheduleModalMain = ({ disabled, data }: ModalContentsProps) => {
     <StyledContents disabled={disabled}>
       <ContentsItem>
         <DropdownContainer
-          title="카테고리"
+          initial={data?.category_id}
           dataList={Category_TEXT}
         ></DropdownContainer>
         <TodoTitleInputText text={data?.title} />
       </ContentsItem>
       <ContentsItem>
-        <DatePicker dataDate={data?.start?.split(" ")[0]} />
-        <TimePicker />
+        <DatePicker dataDate={data?.start} />
+        <TimePicker dataTime={data?.start} />
         <SmallTextLabel text="~" />
-        <DatePicker />
-        <TimePicker />
+        <DatePicker dataDate={data?.end} />
+        <TimePicker dataTime={data?.end} />
       </ContentsItem>
       <ContentsItem>
         <DropdownContainer
-          title={Repetition_TEXT.NONE}
+          initial={data?.repetition}
           dataList={Repetition_TEXT}
         ></DropdownContainer>
+        <StarRatingDiv>
+          <StarRating value={data?.importance} />
+        </StarRatingDiv>
       </ContentsItem>
       <ContentsItem>
         <TodoPlaceInputText text={data?.place} />
@@ -84,4 +88,8 @@ const StyledContents = styled.div<ModalContentsPropsWithoutData>`
 const ContentsItem = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const StarRatingDiv = styled.div`
+  margin-left: 10px;
 `;

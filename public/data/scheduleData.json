@@ -5,7 +5,7 @@
     "title": "미니 생일",
     "start": "20240704 00:00",
     "end": "20240704 24:00",
-    "repetition": "none",
+    "repetition": "NONE",
     "importance": 5,
     "place": "",
     "comment": ""
@@ -16,7 +16,7 @@
     "title": "야구",
     "start": "20240712 19:00",
     "end": "20240712 21:00",
-    "repetition": "none",
+    "repetition": "NONE",
     "importance": 2,
     "place": "",
     "comment": ""
@@ -27,7 +27,7 @@
     "title": "도서관 데이트",
     "start": "20240722 09:30",
     "end": "20240722 12:59",
-    "repetition": "none",
+    "repetition": "NONE",
     "importance": 1,
     "place": "월평도서관",
     "comment": ""
@@ -38,7 +38,7 @@
     "title": "지렁과 저녁약속",
     "start": "20240722 18:00",
     "end": "20240722 22:00",
-    "repetition": "none",
+    "repetition": "NONE",
     "importance": 5,
     "place": "미니없는 미니집",
     "comment": ""
@@ -49,7 +49,7 @@
     "title": "다같이 대천여행",
     "start": "20240717 12:00",
     "end": "20240719 13:00",
-    "repetition": "none",
+    "repetition": "NONE",
     "importance": 5,
     "place": "대천",
     "comment": "메모입니둥"

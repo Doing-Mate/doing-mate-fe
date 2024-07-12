@@ -3,7 +3,7 @@ import { Label } from "../Label";
 
 interface DropdownListProps {
   dataList: { [key: string]: string };
-  setSelectedItem: React.Dispatch<string>;
+  setSelectedItem: React.Dispatch<[string, string]>;
 }
 
 export const DropdownList = ({
@@ -14,7 +14,10 @@ export const DropdownList = ({
   return (
     <StyledDropdownList {...props}>
       {Object.entries(dataList).map(([key, value]) => (
-        <StyledDropdownListItem id={key} onClick={() => setSelectedItem(value)}>
+        <StyledDropdownListItem
+          key={key}
+          onClick={() => setSelectedItem([key, value])}
+        >
           <Label fontSizeType={"smallFont"}>{value}</Label>
         </StyledDropdownListItem>
       ))}

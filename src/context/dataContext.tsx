@@ -1,11 +1,6 @@
 import { createContext, useState } from "react";
 
-import {
-  ScheduleDataProps,
-  CategoryDataProps,
-  BasicScheduleData,
-  BasicCategoryData,
-} from "./dataInterface";
+import { ScheduleDataProps, CategoryDataProps } from "./dataInterface";
 
 interface scheduleDataType {
   scheduleList: ScheduleDataProps[];
@@ -13,7 +8,7 @@ interface scheduleDataType {
 }
 
 const ScheduleDataContext = createContext<scheduleDataType>({
-  scheduleList: [BasicScheduleData],
+  scheduleList: [],
   setScheduleList: () => {},
 });
 
@@ -23,7 +18,7 @@ interface categoryDataType {
 }
 
 const CategoryDataContext = createContext<categoryDataType>({
-  categoryList: BasicCategoryData,
+  categoryList: [],
   setCategoryList: () => {},
 });
 
@@ -31,11 +26,8 @@ interface DataContextProviderProps {
   children: React.ReactNode;
 }
 const DataContextProvider = ({ children }: DataContextProviderProps) => {
-  const [scheduleList, setScheduleList] = useState<ScheduleDataProps[]>([
-    BasicScheduleData,
-  ]);
-  const [categoryList, setCategoryList] =
-    useState<CategoryDataProps[]>(BasicCategoryData);
+  const [scheduleList, setScheduleList] = useState<ScheduleDataProps[]>([]);
+  const [categoryList, setCategoryList] = useState<CategoryDataProps[]>([]);
 
   return (
     <CategoryDataContext.Provider value={{ categoryList, setCategoryList }}>

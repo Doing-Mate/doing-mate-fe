@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker as MuiDatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -9,7 +9,14 @@ interface DatePickerProps {
 }
 
 export const DatePicker = ({ dataDate }: DatePickerProps) => {
-  const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
+  const [startDate, setStartDate] = useState<Dayjs | null>();
+
+  useEffect(() => {
+    dataDate !== undefined
+      ? setStartDate(dayjs(dataDate))
+      : setStartDate(dayjs());
+  }, []);
+
   // console.log(dataDate);
   // dataDate !== undefined
   //   ? () => setStartDate(dayjs(dataDate.split(" ")[0]))

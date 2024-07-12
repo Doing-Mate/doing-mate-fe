@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DropdownList } from "./DropdownList";
 import { Button } from "../Button";
 import styled from "styled-components";
 
 interface DropdownContainerProps {
-  title: string;
+  initial?: string;
   dataList: { [key: string]: string };
 }
 
 export const DropdownContainer = ({
-  title,
+  initial,
   dataList,
 }: DropdownContainerProps) => {
   const [isDropdownView, setDropdownView] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(title);
+  const [selectedItem, setSelectedItem] = useState<[string, string]>(["", ""]);
+
+  useEffect(() => {
+    const data = Object.entries(dataList).find((item) => {
+      item[0] === initial;
+      return item;
+    });
+    data === undefined
+      ? setSelectedItem(Object.entries(dataList)[0])
+      : setSelectedItem(data);
+  }, []);
 
   const handleClickContainer = () => {
     setDropdownView(!isDropdownView);
@@ -36,7 +46,7 @@ export const DropdownContainer = ({
         fontSizeType={"smallFont"}
         borderType={"modal"}
       >
-        <label>{selectedItem}</label>
+        <label>{selectedItem[1]}</label>
         <label>{isDropdownView ? "▲" : "▼"}</label>
       </Button>
       {isDropdownView && (
