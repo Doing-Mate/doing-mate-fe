@@ -6,26 +6,24 @@ import dayjs, { Dayjs } from "dayjs";
 
 interface DatePickerProps {
   dataDate?: string;
+  onChangeData: (value: string) => void;
 }
 
-export const DatePicker = ({ dataDate }: DatePickerProps) => {
-  const [startDate, setStartDate] = useState<Dayjs | null>();
+export const DatePicker = ({ dataDate, onChangeData }: DatePickerProps) => {
+  const [startDate, setStartDate] = useState<Dayjs | null>(dayjs());
 
   useEffect(() => {
-    dataDate !== undefined
-      ? setStartDate(dayjs(dataDate))
-      : setStartDate(dayjs());
+    onChangeData(startDate!.format("YYYYMMDD").toString());
+  }, [startDate]);
+
+  useEffect(() => {
+    dataDate !== undefined && setStartDate(dayjs(dataDate));
   }, []);
 
-  // console.log(dataDate);
-  // dataDate !== undefined
-  //   ? () => setStartDate(dayjs(dataDate.split(" ")[0]))
-  //   : () => setStartDate(dayjs());
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MuiDatePicker
         format="YYYY. MM. DD. ddd"
-        // value={dataDate !== undefined ? dayjs(dataDate) : dayjs()}
         value={startDate}
         onChange={(date) => setStartDate(date)}
         sx={{

@@ -3,11 +3,11 @@ import { CategoryModalHeader } from "./Header";
 import { CategoryModalFooter } from "./Footer";
 import { CategoryListMain } from "./Main/CategoryListMain";
 import { CategoryItemMain } from "./Main/CategoryItemMain";
-import { CategoryAlertDialog } from "../../components/AlertDialog/CategoryDeleteAlertDialog";
-import { ModalProps } from "../../context/modalPageComponents";
-import { ChangeModalComponent } from "../../components/ChangeModalComponent";
-import { CRUDButton } from "../../components/Button/CRUDButton";
-import theme from "../../styles/theme";
+import { CategoryAlertDialog } from "../../AlertDialog/CategoryDeleteAlertDialog";
+import { ModalProps } from "../../../context/modalPageComponents";
+import { ChangeModalComponent } from "../../ChangeModalComponent";
+import { CRUDButton } from "../../Button/CRUDButton";
+import theme from "../../../styles/theme";
 
 interface ModalDataProps {
   mode: ModalProps;

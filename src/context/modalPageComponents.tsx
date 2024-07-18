@@ -1,13 +1,5 @@
 import { ScheduleDataProps } from "./dataInterface";
 
-export interface ModalType {
-  modelType: "schedule" | "category";
-}
-
-export interface ModalPropsType {
-  propsType: "detail" | "modify" | "add" | "list" | "item";
-}
-
 export interface ModalProps {
   modelType: "schedule" | "category";
   propsType: "detail" | "modify" | "add" | "list" | "item";

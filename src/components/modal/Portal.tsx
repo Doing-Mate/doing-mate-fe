@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom";
 
-interface PotalProps {
+interface PortalProps {
   children: React.ReactNode;
 }
 
-export const ModalPortal = ({ children }: PotalProps) => {
+export const ModalPortal = ({ children }: PortalProps) => {
   return ReactDOM.createPortal(children, document.getElementById("modal")!);
 };

@@ -5,7 +5,7 @@ import { SideBar } from "../layout/Sidebar";
 import { Main } from "../layout/Main";
 import { ModalContextProvider } from "../context/modalContext";
 import { DataContextProvider } from "../context/dataContext";
-import { ModalContainer } from "../modal/ModalContainer";
+import { ModalContainer } from "../components/modal/ModalContainer";
 
 export const MainPage = () => {
   return (

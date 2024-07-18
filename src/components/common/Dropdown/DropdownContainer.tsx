@@ -6,14 +6,20 @@ import styled from "styled-components";
 interface DropdownContainerProps {
   initial?: string;
   dataList: { [key: string]: string };
+  onChange: (key: string) => void;
 }
 
 export const DropdownContainer = ({
   initial,
   dataList,
+  onChange,
 }: DropdownContainerProps) => {
   const [isDropdownView, setDropdownView] = useState(false);
   const [selectedItem, setSelectedItem] = useState<[string, string]>(["", ""]);
+
+  useEffect(() => {
+    selectedItem[0] !== "" && onChange(selectedItem[0]);
+  }, [selectedItem]);
 
   useEffect(() => {
     const data = Object.entries(dataList).find((item) => {

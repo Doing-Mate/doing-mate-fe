@@ -6,10 +6,15 @@ import dayjs, { Dayjs } from "dayjs";
 
 interface TimePickerProps {
   dataTime?: string;
+  onChangeData: (value: string) => void;
 }
 
-export const TimePicker = ({ dataTime }: TimePickerProps) => {
-  const [startTime, setStartTime] = useState<Dayjs | null>();
+export const TimePicker = ({ dataTime, onChangeData }: TimePickerProps) => {
+  const [startTime, setStartTime] = useState<Dayjs | null>(null);
+
+  useEffect(() => {
+    startTime !== null && onChangeData(startTime!.format("HH:mm").toString());
+  }, [startTime]);
 
   useEffect(() => {
     dataTime !== undefined
@@ -50,7 +55,3 @@ export const TimePicker = ({ dataTime }: TimePickerProps) => {
     </LocalizationProvider>
   );
 };
-
-// const StyledReactTimePicker = styled(MuiTimePicker)`
-//   padding: 5px 10px;
-// `;

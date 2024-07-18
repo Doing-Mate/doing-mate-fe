@@ -1,17 +1,21 @@
 import styled from "styled-components";
-import { useModalStateContext } from "../../../hooks/useModalStateContext";
-import { ModalTitleLabel } from "../../../components/Label/ModalTitleLabel";
-import { CloseButton } from "../../../components/Button/CloseButton";
-import theme from "../../../styles/theme";
-import CloseIcon from "../../../assets/icons/ic_close.png";
+import { useModalStateContext } from "../../../../hooks/useModalStateContext";
+import { useModalModeContext } from "../../../../hooks/useModalModeContext";
+import { ModalTitleLabel } from "../../../Label/ModalTitleLabel";
+import { CloseButton } from "../../../Button/CloseButton";
+import theme from "../../../../styles/theme";
+import CloseIcon from "../../../../assets/icons/ic_close.png";
 
 interface ModalHeaderProps {
   text: string;
 }
 export const ScheduleModalHeader = ({ text }: ModalHeaderProps) => {
   const { onModal, setOnModal } = useModalStateContext();
+  const { modalMode, setModalMode } = useModalModeContext();
 
   const handleModal = () => {
+    modalMode.data = undefined;
+    setModalMode(modalMode);
     setOnModal(!onModal);
   };
 

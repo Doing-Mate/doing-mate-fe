@@ -7,9 +7,13 @@ const StyledTodoPlaceInputText = styled(InputText)`
 
 interface TodoPlaceInputTextProps {
   text?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TodoPlaceInputText = ({ text }: TodoPlaceInputTextProps) => {
+export const TodoPlaceInputText = ({
+  text,
+  onChange,
+}: TodoPlaceInputTextProps) => {
   return (
     <StyledTodoPlaceInputText
       sizeType={"medium"}
@@ -17,6 +21,7 @@ export const TodoPlaceInputText = ({ text }: TodoPlaceInputTextProps) => {
       borderType={"round"}
       placeholder="장소 입력"
       value={text}
+      onChange={onChange}
     />
   );
 };

@@ -1,7 +1,8 @@
 import { useReducer, useEffect } from "react";
 import reducer from "../reducer/reducer";
 import { useModalModeContext } from "../hooks/useModalModeContext";
-import { ModalPropsType } from "../context/modalPageComponents";
+import { ScheduleDataProps } from "../context/dataInterface";
+import { useScheduleData } from "../hooks/useScheduleData";
 
 interface footerDataProps {
   text: string;
@@ -9,11 +10,18 @@ interface footerDataProps {
   backClick?: () => void;
 }
 
+interface ChangeModalComponentProps {
+  propsType: "detail" | "modify" | "add" | "list" | "item";
+  inputData?: ScheduleDataProps;
+}
+
 export const ChangeModalComponent = ({
   propsType,
-}: ModalPropsType): footerDataProps[] => {
+  inputData,
+}: ChangeModalComponentProps): footerDataProps[] => {
   const { modalMode, setModalMode } = useModalModeContext();
   const [newMode, dispatch] = useReducer(reducer, modalMode);
+  const { AddData, ModifyDataList } = useScheduleData();
 
   interface PageTypeProps {
     pageType:
@@ -60,13 +68,22 @@ export const ChangeModalComponent = ({
           text: "취소",
           onClick: () => moveModal({ pageType: "detail" }),
         },
-        { text: "저장", onClick: () => moveModal({ pageType: "detail" }) },
+        {
+          text: "저장",
+          onClick: () => {
+            ModifyDataList(inputData!);
+            moveModal({ pageType: "detail" });
+          },
+        },
       ];
     case "add":
       return [
         {
           text: "저장",
-          onClick: () => moveModal({ pageType: "detail" }),
+          onClick: () => {
+            AddData(inputData!);
+            moveModal({ pageType: "detail" });
+          },
         },
       ];
 
