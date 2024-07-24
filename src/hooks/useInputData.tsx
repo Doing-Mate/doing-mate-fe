@@ -1,19 +1,6 @@
 import { useState } from "react";
 import { ScheduleDataProps } from "../context/dataInterface";
 
-// interface ScheduleDataProps {
-//   id: string;
-//   category_id: string;
-//   title: string;
-//   start: string;
-//   end: string;
-//   repetition: string;
-//   importance: number;
-//   place?: string;
-//   comment?: string;
-//   color?: string;
-// }
-
 export const useInputData = () => {
   const [inputData, setInputData] = useState<ScheduleDataProps>({
     id: "",
@@ -71,6 +58,7 @@ export const useInputData = () => {
 
   return {
     inputData,
+    setInputData,
     handleInputChange,
     handleDataChange,
     handleStarChange,

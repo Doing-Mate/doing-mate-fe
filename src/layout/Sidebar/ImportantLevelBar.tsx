@@ -33,8 +33,8 @@ const ImportantLevelItem = ({ num }: StarLevelProps) => {
 const StarLevel = ({ num }: StarLevelProps) => {
   return (
     <StarLevelDiv key={"star" + num}>
-      {new Array(num).fill(0).map(() => (
-        <Icon sizeType="small" icon={StarIcon} />
+      {new Array(num).fill(0).map((item, index) => (
+        <Icon key={num + "_" + index} sizeType="small" icon={StarIcon} />
       ))}
     </StarLevelDiv>
   );

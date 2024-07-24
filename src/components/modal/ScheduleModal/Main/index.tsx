@@ -120,6 +120,7 @@ type ModalContentsPropsWithoutData = Omit<
   | "handleDataChange"
   | "handleStarChange"
   | "handleDropdownChange"
+  | "setInputText"
 >;
 
 const StyledContents = styled.div<ModalContentsPropsWithoutData>`

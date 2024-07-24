@@ -41,7 +41,6 @@ export const Main = () => {
     ScheduleDetailComponent.data = scheduleList.find(
       (scheduleItem) => scheduleItem.id === eventId
     );
-
     setModalMode(ScheduleDetailComponent);
     setOnModal(!onModal);
   };

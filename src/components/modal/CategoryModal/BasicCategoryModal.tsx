@@ -14,7 +14,10 @@ interface ModalDataProps {
 }
 
 export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
-  const footerData = ChangeModalComponent({ propsType: mode.propsType });
+  const footerData = ChangeModalComponent({
+    propsType: mode.propsType,
+    inputData: mode.data,
+  });
   mode.footerButtons =
     mode.propsType === "item"
       ? [

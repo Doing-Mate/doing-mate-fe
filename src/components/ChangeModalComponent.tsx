@@ -7,6 +7,7 @@ import { useScheduleData } from "../hooks/useScheduleData";
 interface footerDataProps {
   text: string;
   onClick: () => void;
+  OKClick?: () => void;
   backClick?: () => void;
 }
 
@@ -21,7 +22,7 @@ export const ChangeModalComponent = ({
 }: ChangeModalComponentProps): footerDataProps[] => {
   const { modalMode, setModalMode } = useModalModeContext();
   const [newMode, dispatch] = useReducer(reducer, modalMode);
-  const { AddData, ModifyDataList } = useScheduleData();
+  const { AddData, ModifyData, DeleteData } = useScheduleData();
 
   interface PageTypeProps {
     pageType:
@@ -58,9 +59,15 @@ export const ChangeModalComponent = ({
         {
           text: "삭제",
           onClick: () => moveModal({ pageType: "delete" }),
+          OKClick: () => DeleteData(inputData!),
           backClick: () => moveModal({ pageType: "detail" }),
         },
-        { text: "수정", onClick: () => moveModal({ pageType: "modify" }) },
+        {
+          text: "수정",
+          onClick: () => {
+            moveModal({ pageType: "modify" });
+          },
+        },
       ];
     case "modify":
       return [
@@ -71,8 +78,7 @@ export const ChangeModalComponent = ({
         {
           text: "저장",
           onClick: () => {
-            ModifyDataList(inputData!);
-            moveModal({ pageType: "detail" });
+            ModifyData(inputData!) && moveModal({ pageType: "detail" });
           },
         },
       ];
@@ -81,8 +87,7 @@ export const ChangeModalComponent = ({
         {
           text: "저장",
           onClick: () => {
-            AddData(inputData!);
-            moveModal({ pageType: "detail" });
+            AddData(inputData!) && moveModal({ pageType: "detail" });
           },
         },
       ];

@@ -4,22 +4,25 @@ import { AlertDialog } from "../common/Dialog";
 
 interface ScheduleAlertDialogProps {
   Open: boolean;
-  movePage: () => void;
+  okClick: () => void;
+  backClick: () => void;
 }
 
 export const ScheduleAlertDialog = ({
   Open,
-  movePage,
+  okClick,
+  backClick,
 }: ScheduleAlertDialogProps) => {
   const [open, setOpen] = useState(Open);
   const { setOnModal } = useModalStateContext();
 
   const handleClose = () => {
     setOpen(false);
-    movePage();
+    backClick();
   };
 
   const handleSave = () => {
+    okClick();
     setOpen(false);
     setOnModal(false);
   };
