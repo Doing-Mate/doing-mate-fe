@@ -8,7 +8,8 @@ import {
   ScheduleDetailComponent,
   ScheduleAddComponent,
 } from "../../context/modalPageComponents";
-import { getScheduleData, getCategoryData } from "../../apis/fetch";
+import { getScheduleList } from "../../api/schedule";
+import { getCategoryList } from "../../api/category";
 
 export const Main = () => {
   const { onModal, setOnModal } = useModalStateContext();
@@ -17,8 +18,8 @@ export const Main = () => {
   const { setCategoryList } = useCategoryDataContext();
 
   const getAndSetDataList = async () => {
-    const categoryData = await getCategoryData();
-    const scheduleData = await getScheduleData();
+    const categoryData = await getCategoryList();
+    const scheduleData = await getScheduleList();
     const scheduleList = scheduleData.map((scheduleItem) => {
       const category = categoryData.find(
         (categoryItem) => categoryItem.id === scheduleItem.category_id
