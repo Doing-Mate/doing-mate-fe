@@ -71,6 +71,7 @@ export const ScheduleModalMain = ({
           onChangeData={(value) => handleDataChange("date", "start", value)}
         />
         <TimePicker
+          dataType="start"
           dataTime={data?.start}
           onChangeData={(value) => handleDataChange("time", "start", value)}
         />
@@ -80,6 +81,7 @@ export const ScheduleModalMain = ({
           onChangeData={(value) => handleDataChange("date", "end", value)}
         />
         <TimePicker
+          dataType="end"
           dataTime={data?.end}
           onChangeData={(value) => handleDataChange("time", "end", value)}
         />

@@ -5,11 +5,16 @@ import { TimePicker as MuiTimePicker } from "@mui/x-date-pickers/TimePicker/Time
 import dayjs, { Dayjs } from "dayjs";
 
 interface TimePickerProps {
+  dataType: "start" | "end";
   dataTime?: string;
   onChangeData: (value: string) => void;
 }
 
-export const TimePicker = ({ dataTime, onChangeData }: TimePickerProps) => {
+export const TimePicker = ({
+  dataType,
+  dataTime,
+  onChangeData,
+}: TimePickerProps) => {
   const [startTime, setStartTime] = useState<Dayjs | null>(null);
 
   useEffect(() => {
@@ -19,7 +24,9 @@ export const TimePicker = ({ dataTime, onChangeData }: TimePickerProps) => {
   useEffect(() => {
     dataTime !== undefined
       ? setStartTime(dayjs(dataTime))
-      : setStartTime(dayjs());
+      : dataType === "start"
+      ? setStartTime(dayjs("00:00", "HH:mm"))
+      : setStartTime(dayjs("23:59", "HH:mm"));
   }, []);
 
   return (
