@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { CategoryListLabel } from "../../../components/Label/CategoryListLabel";
-import { ColorBox } from "../../../components/common/ColorBox";
-import { CloseButton } from "../../../components/Button/CloseButton";
-import CloseIcon from "../../../assets/icons/ic_close.png";
+import { CategoryListLabel } from "../../../Label/CategoryListLabel";
+import { ColorBox } from "../../../common/ColorBox";
+import { CloseButton } from "../../../Button/CloseButton";
+import CloseIcon from "../../../../assets/icons/ic_close.png";
 
 interface footerDataProps {
   text: string;

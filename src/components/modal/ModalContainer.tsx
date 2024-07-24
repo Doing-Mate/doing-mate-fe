@@ -1,6 +1,6 @@
-import { ModalPortal } from "../portal/Portal";
-import { useModalStateContext } from "../hooks/useModalStateContext";
-import { useModalModeContext } from "../hooks/useModalModeContext";
+import { ModalPortal } from "./Portal";
+import { useModalStateContext } from "../../hooks/useModalStateContext";
+import { useModalModeContext } from "../../hooks/useModalModeContext";
 import { BasicScheduleModal } from "./ScheduleModal/BasicScheduleModal";
 import { BasicCategoryModal } from "./CategoryModal/BasicCategoryModal";
 

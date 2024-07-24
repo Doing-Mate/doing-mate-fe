@@ -7,9 +7,13 @@ const StyledTodoMemoInputTextarea = styled(InputTextarea)`
 
 interface TodoMemoInputTextareaProps {
   text?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const TodoMemoInputTextarea = ({ text }: TodoMemoInputTextareaProps) => {
+export const TodoMemoInputTextarea = ({
+  text,
+  onChange,
+}: TodoMemoInputTextareaProps) => {
   return (
     <StyledTodoMemoInputTextarea
       sizeType={"large"}
@@ -17,6 +21,7 @@ export const TodoMemoInputTextarea = ({ text }: TodoMemoInputTextareaProps) => {
       borderType={"round"}
       placeholder="메모 추가"
       value={text}
+      onChange={onChange}
     />
   );
 };

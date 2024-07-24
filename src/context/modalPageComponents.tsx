@@ -1,10 +1,4 @@
-export interface ModalType {
-  modelType: "schedule" | "category";
-}
-
-export interface ModalPropsType {
-  propsType: "detail" | "modify" | "add" | "list" | "item";
-}
+import { ScheduleDataProps } from "./dataInterface";
 
 export interface ModalProps {
   modelType: "schedule" | "category";
@@ -13,7 +7,7 @@ export interface ModalProps {
   footerButtons: React.ReactNode[] | null;
   mainDisabled: boolean;
   alert: boolean;
-  data?: object;
+  data?: ScheduleDataProps;
 }
 
 const BasicComponent: ModalProps = {
@@ -23,7 +17,6 @@ const BasicComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
 };
 
 const ScheduleDetailComponent: ModalProps = {
@@ -33,7 +26,6 @@ const ScheduleDetailComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: false,
   alert: false,
-  data: [],
 };
 
 const ScheduleModifyComponent: ModalProps = {
@@ -43,7 +35,6 @@ const ScheduleModifyComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
 };
 
 const ScheduleAddComponent: ModalProps = {
@@ -53,7 +44,6 @@ const ScheduleAddComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
 };
 
 const ScheduleDeleteComponent: ModalProps = {
@@ -63,7 +53,6 @@ const ScheduleDeleteComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: false,
   alert: true,
-  data: [],
 };
 
 const CategoryListComponent: ModalProps = {
@@ -73,7 +62,6 @@ const CategoryListComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
 };
 
 const CategoryItemComponent: ModalProps = {
@@ -83,7 +71,6 @@ const CategoryItemComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: false,
-  data: [],
 };
 
 const CategoryDeleteComponent: ModalProps = {
@@ -93,7 +80,6 @@ const CategoryDeleteComponent: ModalProps = {
   footerButtons: [],
   mainDisabled: true,
   alert: true,
-  data: [],
 };
 
 export {

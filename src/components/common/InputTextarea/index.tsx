@@ -8,6 +8,7 @@ interface InputTextareaProps {
   disabled?: boolean;
   required?: boolean;
   value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputTextarea = ({
@@ -18,6 +19,7 @@ export const InputTextarea = ({
   disabled = false,
   required = false,
   value,
+  onChange,
   ...props
 }: InputTextareaProps) => {
   return (
@@ -29,6 +31,7 @@ export const InputTextarea = ({
       disabled={disabled}
       required={required}
       value={value}
+      onChange={onChange}
       {...props}
     ></StyledInputTextarea>
   );

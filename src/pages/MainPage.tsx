@@ -4,17 +4,20 @@ import { Header } from "../layout/Header";
 import { SideBar } from "../layout/Sidebar";
 import { Main } from "../layout/Main";
 import { ModalContextProvider } from "../context/modalContext";
-import { ModalContainer } from "../modal/ModalContainer";
+import { DataContextProvider } from "../context/dataContext";
+import { ModalContainer } from "../components/modal/ModalContainer";
 
 export const MainPage = () => {
   return (
     <ModalContextProvider>
-      <Layout header={<Header />} sideBar={<SideBar />}>
-        <StyledMainDiv>
-          <Main />
-        </StyledMainDiv>
-      </Layout>
-      <ModalContainer />
+      <DataContextProvider>
+        <Layout header={<Header />} sideBar={<SideBar />}>
+          <StyledMainDiv>
+            <Main />
+          </StyledMainDiv>
+        </Layout>
+        <ModalContainer />
+      </DataContextProvider>
     </ModalContextProvider>
   );
 };

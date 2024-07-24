@@ -4,24 +4,27 @@ import interactionPlugin, { DateClickArg } from "@fullcalendar/interaction";
 import { EventClickArg } from "@fullcalendar/core";
 import { DayCellContentArg } from "@fullcalendar/core";
 import bootstrap5Plugin from "@fullcalendar/bootstrap5";
+import { ScheduleDataProps } from "../../../context/dataInterface";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 interface CalendarProps {
-  eventClick: (info: EventClickArg) => void;
+  eventClick: (eventId: string) => void;
   todoPlusClick: () => void;
+  events: ScheduleDataProps[];
 }
-export const Calendar = ({ eventClick, todoPlusClick }: CalendarProps) => {
-  const events = [
-    {
-      title: "미니 생일",
-      start: "2024-07-11 12:00",
-      end: "2024-07-12 15:00",
-      color: "#EA0071",
-      comment: "메모입니둥",
-    },
-    { title: "둔산동 데이트", date: "2024-07-13" },
-  ];
+export const Calendar = ({
+  eventClick,
+  todoPlusClick,
+  events,
+}: CalendarProps) => {
+  const calendarEventClick = (info: EventClickArg) => {
+    eventClick(info.event._def.publicId);
+  };
+
+  const calendarDateClick = (info: DateClickArg) => {
+    console.log(info.dateStr);
+  };
 
   return (
     <FullCalendar
@@ -44,15 +47,11 @@ export const Calendar = ({ eventClick, todoPlusClick }: CalendarProps) => {
         },
       }}
       dateClick={calendarDateClick}
-      eventClick={eventClick}
+      eventClick={calendarEventClick}
       dayCellContent={dayCellContent}
       events={events}
     />
   );
-};
-
-const calendarDateClick = (info: DateClickArg) => {
-  console.log(info.dateStr);
 };
 
 //일 없애기
