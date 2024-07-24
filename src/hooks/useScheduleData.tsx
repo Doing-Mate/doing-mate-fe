@@ -1,5 +1,6 @@
 import { useScheduleDataContext } from "./useScheduleDataContext";
 import { ScheduleDataProps } from "../context/dataInterface";
+import { postSchedule, deleteSchedule } from "../api/schedule";
 
 export const useScheduleData = () => {
   const { scheduleList, setScheduleList } = useScheduleDataContext();
@@ -35,7 +36,8 @@ export const useScheduleData = () => {
     newData.id = createId(newData.start.split(" ")[0], 1);
 
     checkValidate(newData)
-      ? (result = true) && setScheduleList([...scheduleList, newData])
+      ? (result = true) &&
+        (postSchedule(newData), setScheduleList([...scheduleList, newData]))
       : alert("필수항목을 입력해주세요.");
 
     return result;
@@ -46,6 +48,7 @@ export const useScheduleData = () => {
       (item) => item.id !== newData.id
     );
 
+    deleteSchedule(newData.id);
     setScheduleList(newScheduleList);
   };
 
@@ -56,7 +59,8 @@ export const useScheduleData = () => {
     );
 
     checkValidate(newData)
-      ? (result = true) && setScheduleList([...newScheduleList, newData])
+      ? (result = true) &&
+        (postSchedule(newData), setScheduleList([...newScheduleList, newData]))
       : alert("필수항목을 입력해주세요.");
 
     return result;
