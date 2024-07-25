@@ -6,8 +6,8 @@ import { CategoryItemMain } from "./Main/CategoryItemMain";
 import { CategoryAlertDialog } from "../../AlertDialog/CategoryDeleteAlertDialog";
 import { ModalProps } from "../../../context/modalPageComponents";
 import { ChangeModalComponent } from "../../ChangeModalComponent";
-import { CRUDButton } from "../../Button/CRUDButton";
-import theme from "../../../styles/theme";
+import { CRUDButtonList } from "../../Button/CRUDButtonList";
+import { CategoryDataProps } from "../../../context/dataInterface";
 
 interface ModalDataProps {
   mode: ModalProps;
@@ -16,26 +16,13 @@ interface ModalDataProps {
 export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
   const footerData = ChangeModalComponent({
     propsType: mode.propsType,
-    inputData: mode.data,
   });
+
   mode.footerButtons =
     mode.propsType === "item"
-      ? [
-          <CRUDButton
-            key="footerBtn_01"
-            text={footerData[0].text}
-            colorType={theme.colors.secondary}
-            hoverColorType={"#e498ac"}
-            onClick={footerData[0].onClick}
-          />,
-          <CRUDButton
-            key="footerBtn_02"
-            text={footerData[1].text}
-            colorType={theme.colors.primary}
-            hoverColorType={"#92b5ec"}
-            onClick={footerData[1].onClick}
-          />,
-        ]
+      ? CRUDButtonList({
+          footerData: footerData,
+        })
       : [];
 
   return (
@@ -44,10 +31,13 @@ export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
       footer={<CategoryModalFooter children={mode.footerButtons} />}
     >
       {mode.propsType === "item" ? (
-        <CategoryItemMain />
+        <CategoryItemMain data={mode.data as CategoryDataProps} />
       ) : (
         <>
-          <CategoryListMain onClickData={footerData} />
+          <CategoryListMain
+            data={mode.data as CategoryDataProps[]}
+            onClickData={footerData}
+          />
           {mode.alert && (
             <CategoryAlertDialog
               Open={mode.alert}

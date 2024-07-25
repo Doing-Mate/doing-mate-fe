@@ -59,7 +59,7 @@ export const ChangeModalComponent = ({
         {
           text: "삭제",
           onClick: () => moveModal({ pageType: "delete" }),
-          OKClick: () => DeleteData(inputData!),
+          OKClick: () => DeleteData(inputData as ScheduleDataProps),
           backClick: () => moveModal({ pageType: "detail" }),
         },
         {
@@ -78,7 +78,8 @@ export const ChangeModalComponent = ({
         {
           text: "저장",
           onClick: () => {
-            ModifyData(inputData!) && moveModal({ pageType: "detail" });
+            ModifyData(inputData as ScheduleDataProps) &&
+              moveModal({ pageType: "detail" });
           },
         },
       ];
@@ -87,7 +88,8 @@ export const ChangeModalComponent = ({
         {
           text: "저장",
           onClick: () => {
-            AddData(inputData!) && moveModal({ pageType: "detail" });
+            AddData(inputData as ScheduleDataProps) &&
+              moveModal({ pageType: "detail" });
           },
         },
       ];
@@ -104,7 +106,9 @@ export const ChangeModalComponent = ({
       return [
         {
           text: "click",
-          onClick: () => moveModal({ pageType: "item" }),
+          onClick: () => {
+            moveModal({ pageType: "item" });
+          },
         },
         {
           text: "delete",

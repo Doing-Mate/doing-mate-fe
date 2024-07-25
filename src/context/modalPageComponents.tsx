@@ -1,4 +1,4 @@
-import { ScheduleDataProps } from "./dataInterface";
+import { ScheduleDataProps, CategoryDataProps } from "./dataInterface";
 
 export interface ModalProps {
   modelType: "schedule" | "category";
@@ -7,7 +7,7 @@ export interface ModalProps {
   footerButtons: React.ReactNode[] | null;
   mainDisabled: boolean;
   alert: boolean;
-  data?: ScheduleDataProps;
+  data?: ScheduleDataProps | CategoryDataProps[] | CategoryDataProps;
 }
 
 const BasicComponent: ModalProps = {

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { CategoryTitleLabel } from "../../components/Label/CategoryTitleLabel";
 import { Checkbox } from "../../components/common/Checkbox";
@@ -6,12 +7,30 @@ import { useModalStateContext } from "../../hooks/useModalStateContext";
 import { useModalModeContext } from "../../hooks/useModalModeContext";
 import { CategoryListComponent } from "../../context/modalPageComponents";
 import PlusIcon from "../../assets/icons/ic_plus.png";
+import { getCategoryList } from "../../api/category";
+import { useCategoryDataContext } from "../../hooks/useCategoryDataContext";
 
 export const CategoryBar = () => {
   const { onModal, setOnModal } = useModalStateContext();
   const { setModalMode } = useModalModeContext();
+  const { categoryList, setCategoryList } = useCategoryDataContext();
+
+  const getAndSetDataList = async () => {
+    const categoryList = await getCategoryList();
+
+    setCategoryList(categoryList);
+  };
+
+  useEffect(() => {
+    getAndSetDataList();
+  }, []);
+
+  // useEffect(() => {
+  //   console.log(categoryList);
+  // }, [categoryList]);
 
   const handleModal = () => {
+    CategoryListComponent.data = categoryList;
     setModalMode(CategoryListComponent);
     setOnModal(!onModal);
   };
@@ -22,8 +41,9 @@ export const CategoryBar = () => {
         <CategoryTitleLabel text="카테고리" />
         <PlusButton icon={PlusIcon} onClick={handleModal} />
       </CategoryTitleDiv>
-      <Checkbox colorType="#EA0071" text="생일" />
-      <Checkbox text="약속" />
+      {categoryList.map((item) => (
+        <Checkbox key={item.id} colorType={item.color} text={item.title} />
+      ))}
     </CategoryBarDiv>
   );
 };

@@ -1,11 +1,16 @@
 import { CategoryTitleInputText } from "../../../InputText/CategoryTitleInputText";
 import { ColorPicker } from "../../../common/ColorPicker";
+import { CategoryDataProps } from "../../../../context/dataInterface";
 
-export const CategoryItemMain = () => {
+interface CategoryItemProps {
+  data?: CategoryDataProps;
+}
+
+export const CategoryItemMain = ({ data }: CategoryItemProps) => {
   return (
     <div>
-      <CategoryTitleInputText />
-      <ColorPicker />
+      <CategoryTitleInputText text={data?.title} />
+      <ColorPicker categoryColor={data?.color} />
     </div>
   );
 };

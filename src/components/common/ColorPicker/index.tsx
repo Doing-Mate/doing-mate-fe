@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChromePicker } from "react-color";
 
-export const ColorPicker = () => {
+interface ColorPickerProps {
+  categoryColor?: string;
+}
+
+export const ColorPicker = ({ categoryColor }: ColorPickerProps) => {
   const [color, setColor] = useState<string>("#000");
+
+  useEffect(() => {
+    categoryColor !== undefined && setColor(categoryColor);
+  }, []);
 
   const handleChangeComplete = (color: string) => {
     setColor(color);

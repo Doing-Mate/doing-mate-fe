@@ -6,7 +6,7 @@ import { ModalProps } from "../../../context/modalPageComponents";
 import { ChangeModalComponent } from "../../ChangeModalComponent";
 import { CRUDButtonList } from "../../Button/CRUDButtonList";
 import { ScheduleAlertDialog } from "../../AlertDialog/ScheduleDeleteAlertDialog";
-import { useInputData } from "../../../hooks/useInputData";
+import { useInputScheduleData } from "../../../hooks/useInputScheduleData";
 import { useEffect, useState } from "react";
 import { useScheduleDataContext } from "../../../hooks/useScheduleDataContext";
 import { ScheduleDataProps } from "../../../context/dataInterface";
@@ -23,15 +23,15 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
     handleDataChange,
     handleStarChange,
     handleDropdownChange,
-  } = useInputData();
+  } = useInputScheduleData();
   const { scheduleList } = useScheduleDataContext();
   const [modeData, setModeData] = useState<ScheduleDataProps | undefined>(
-    mode.data
+    mode.data as ScheduleDataProps
   );
 
   useEffect(() => {
     const newData = scheduleList.find(
-      (scheduleItem) => scheduleItem.id === mode.data?.id
+      (scheduleItem) => scheduleItem.id === modeData?.id
     );
     newData !== undefined && setInputData(newData);
     setModeData(newData);
