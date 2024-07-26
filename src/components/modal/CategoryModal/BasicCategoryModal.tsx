@@ -8,14 +8,42 @@ import { ModalProps } from "../../../context/modalPageComponents";
 import { ChangeModalComponent } from "../../ChangeModalComponent";
 import { CRUDButtonList } from "../../Button/CRUDButtonList";
 import { CategoryDataProps } from "../../../context/dataInterface";
+import { useInputCategoryData } from "../../../hooks/useInputCategoryData";
+import { useEffect, useState } from "react";
+import { useCategoryDataContext } from "../../../hooks/useCategoryDataContext";
 
 interface ModalDataProps {
   mode: ModalProps;
 }
 
 export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
+  const { inputData, setInputData, handleTitleChange, handleColorChange } =
+    useInputCategoryData();
+  const { categoryList } = useCategoryDataContext();
+
+  const [itemData, setItemData] = useState<CategoryDataProps | undefined>();
+  const [listData, setListData] = useState<CategoryDataProps[] | undefined>();
+
+  useEffect(() => {
+    if (mode.propsType === "item") {
+      const data = mode.data as CategoryDataProps;
+      const newData = categoryList.find(
+        (categoryItem) => categoryItem.id === data?.id
+      );
+      newData !== undefined && setInputData(newData);
+      setItemData(newData);
+    } else {
+      setListData(categoryList);
+      const newData = { id: "", color: "", title: "" };
+      mode.data !== undefined && mode.alert === true
+        ? setInputData(mode.data as CategoryDataProps)
+        : (setInputData(newData), setItemData(newData));
+    }
+  }, [mode]);
+
   const footerData = ChangeModalComponent({
     propsType: mode.propsType,
+    inputData: inputData,
   });
 
   mode.footerButtons =
@@ -31,17 +59,22 @@ export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
       footer={<CategoryModalFooter children={mode.footerButtons} />}
     >
       {mode.propsType === "item" ? (
-        <CategoryItemMain data={mode.data as CategoryDataProps} />
+        <CategoryItemMain
+          data={itemData as CategoryDataProps}
+          handleTitleChange={handleTitleChange}
+          handleColorChange={handleColorChange}
+        />
       ) : (
         <>
           <CategoryListMain
-            data={mode.data as CategoryDataProps[]}
+            data={listData as CategoryDataProps[]}
             onClickData={footerData}
           />
           {mode.alert && (
             <CategoryAlertDialog
               Open={mode.alert}
-              movePage={footerData[1].backClick!}
+              okClick={footerData[1].OKClick!}
+              backClick={footerData[1].backClick!}
             />
           )}
         </>

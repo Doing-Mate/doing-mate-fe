@@ -25,12 +25,7 @@ export const CategoryBar = () => {
     getAndSetDataList();
   }, []);
 
-  // useEffect(() => {
-  //   console.log(categoryList);
-  // }, [categoryList]);
-
   const handleModal = () => {
-    CategoryListComponent.data = categoryList;
     setModalMode(CategoryListComponent);
     setOnModal(!onModal);
   };

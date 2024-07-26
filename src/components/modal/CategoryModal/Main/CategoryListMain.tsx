@@ -4,7 +4,10 @@ import { ColorBox } from "../../../common/ColorBox";
 import { CloseButton } from "../../../Button/CloseButton";
 import CloseIcon from "../../../../assets/icons/ic_close.png";
 import { CategoryDataProps } from "../../../../context/dataInterface";
-import { CategoryItemComponent } from "../../../../context/modalPageComponents";
+import {
+  CategoryItemComponent,
+  CategoryDeleteComponent,
+} from "../../../../context/modalPageComponents";
 
 interface footerDataProps {
   text: string;
@@ -17,9 +20,14 @@ interface onClickDataProps {
 }
 
 export const CategoryListMain = ({ data, onClickData }: onClickDataProps) => {
-  const itemClick = (item: CategoryDataProps) => {
+  const itemClick = (item?: CategoryDataProps) => {
     CategoryItemComponent.data = item;
     onClickData[0].onClick();
+  };
+
+  const deleteItem = (item?: CategoryDataProps) => {
+    CategoryDeleteComponent.data = item;
+    onClickData[1].onClick();
   };
   return (
     <CategoryList>
@@ -29,11 +37,11 @@ export const CategoryListMain = ({ data, onClickData }: onClickDataProps) => {
             <ColorBox color={item.color} />
             <CategoryListLabel text={item.title} />
           </ItemButton>
-          <CloseButton icon={CloseIcon} onClick={onClickData[1].onClick} />
+          <CloseButton icon={CloseIcon} onClick={() => deleteItem(item)} />
         </CategoryListItem>
       ))}
       <CategoryListItem>
-        <ItemButton onClick={onClickData[0].onClick}>
+        <ItemButton onClick={() => itemClick()}>
           <CategoryListLabel text="+ 카테고리 추가" />
         </ItemButton>
       </CategoryListItem>

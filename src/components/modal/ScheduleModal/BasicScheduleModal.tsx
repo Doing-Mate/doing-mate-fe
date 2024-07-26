@@ -30,8 +30,9 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
   );
 
   useEffect(() => {
+    const data = mode.data as ScheduleDataProps;
     const newData = scheduleList.find(
-      (scheduleItem) => scheduleItem.id === modeData?.id
+      (scheduleItem) => scheduleItem.id === data?.id
     );
     newData !== undefined && setInputData(newData);
     setModeData(newData);

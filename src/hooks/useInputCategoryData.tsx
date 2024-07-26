@@ -8,16 +8,24 @@ export const useInputCategoryData = () => {
     color: "",
   });
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputData((prevState) => ({
       ...prevState,
-      [field]: value,
+      title: event.target.value,
+    }));
+  };
+
+  const handleColorChange = (value: string) => {
+    setInputData((prevState) => ({
+      ...prevState,
+      color: value,
     }));
   };
 
   return {
     inputData,
     setInputData,
-    handleInputChange,
+    handleTitleChange,
+    handleColorChange,
   };
 };

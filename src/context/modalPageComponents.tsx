@@ -8,6 +8,7 @@ export interface ModalProps {
   mainDisabled: boolean;
   alert: boolean;
   data?: ScheduleDataProps | CategoryDataProps[] | CategoryDataProps;
+  // data?: ScheduleDataProps;
 }
 
 const BasicComponent: ModalProps = {

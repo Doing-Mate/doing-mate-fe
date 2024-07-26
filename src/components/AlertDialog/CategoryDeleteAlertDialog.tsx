@@ -3,23 +3,25 @@ import { AlertDialog } from "../common/Dialog";
 
 interface CategoryAlertDialogProps {
   Open: boolean;
-  movePage: () => void;
+  okClick: () => void;
+  backClick: () => void;
 }
 
 export const CategoryAlertDialog = ({
   Open,
-  movePage,
+  okClick,
+  backClick,
 }: CategoryAlertDialogProps) => {
   const [open, setOpen] = useState(Open);
 
   const handleClose = () => {
     setOpen(false);
-    movePage();
+    backClick();
   };
 
   const handleSave = () => {
+    okClick();
     setOpen(false);
-    movePage();
   };
 
   return (
