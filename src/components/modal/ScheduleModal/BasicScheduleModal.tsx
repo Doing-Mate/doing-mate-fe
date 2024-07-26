@@ -9,6 +9,7 @@ import { ScheduleAlertDialog } from "../../AlertDialog/ScheduleDeleteAlertDialog
 import { useInputScheduleData } from "../../../hooks/useInputScheduleData";
 import { useEffect, useState } from "react";
 import { useScheduleDataContext } from "../../../hooks/useScheduleDataContext";
+import { useCategoryDataContext } from "../../../hooks/useCategoryDataContext";
 import { ScheduleDataProps } from "../../../context/dataInterface";
 
 interface ModalDataProps {
@@ -25,9 +26,15 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
     handleDropdownChange,
   } = useInputScheduleData();
   const { scheduleList } = useScheduleDataContext();
+  const { categoryList } = useCategoryDataContext();
   const [modeData, setModeData] = useState<ScheduleDataProps | undefined>(
     mode.data as ScheduleDataProps
   );
+
+  const categoryDataList = {};
+  categoryList.map((item) => {
+    Object.assign(categoryDataList, { [item.id]: item.title });
+  });
 
   useEffect(() => {
     const data = mode.data as ScheduleDataProps;
@@ -55,6 +62,7 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
       <ScheduleModalMain
         disabled={mode.mainDisabled}
         data={modeData}
+        categoryData={categoryDataList}
         handleInputChange={handleInputChange}
         handleDataChange={handleDataChange}
         handleStarChange={handleStarChange}

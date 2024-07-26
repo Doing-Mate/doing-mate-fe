@@ -37,5 +37,10 @@ const StyledDropdownList = styled.ul`
 `;
 
 const StyledDropdownListItem = styled.li`
-  margin: 10px;
+  padding: 10px;
+  &:hover {
+    background: #8d8d8d1f;
+    cursor: pointer;
+    font-weight: bold;
+  }
 `;

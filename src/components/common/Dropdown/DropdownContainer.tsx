@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 interface DropdownContainerProps {
   initial?: string;
-  dataList: { [key: string]: string };
+  dataList?: { [key: string]: string };
   onChange: (key: string) => void;
 }
 
@@ -22,12 +22,9 @@ export const DropdownContainer = ({
   }, [selectedItem]);
 
   useEffect(() => {
-    const data = Object.entries(dataList).find((item) => {
-      item[0] === initial;
-      return item;
-    });
+    const data = Object.entries(dataList!).find((item) => item[0] === initial);
     data === undefined
-      ? setSelectedItem(Object.entries(dataList)[0])
+      ? setSelectedItem(Object.entries(dataList!)[0])
       : setSelectedItem(data);
   }, []);
 
@@ -56,7 +53,7 @@ export const DropdownContainer = ({
         <label>{isDropdownView ? "▲" : "▼"}</label>
       </Button>
       {isDropdownView && (
-        <DropdownList dataList={dataList} setSelectedItem={setSelectedItem} />
+        <DropdownList dataList={dataList!} setSelectedItem={setSelectedItem} />
       )}
     </StyledDropdownContainer>
   );

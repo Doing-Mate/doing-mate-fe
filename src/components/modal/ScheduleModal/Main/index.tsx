@@ -9,14 +9,6 @@ import { TodoPlaceInputText } from "../../../InputText/TodoPlaceInputText";
 import { TodoMemoInputTextarea } from "../../../InputTextarea/TodoMemoInputTextarea";
 import { ScheduleDataProps } from "../../../../context/dataInterface";
 
-const Category_TEXT = {
-  NONE: "기본",
-  생일: "생일",
-  회의: "회의",
-  약속: "약속",
-  데이트: "데이트",
-};
-
 const Repetition_TEXT = {
   NONE: "반복 안함",
   HOUR: "1시간마다 반복",
@@ -28,6 +20,7 @@ const Repetition_TEXT = {
 interface ModalContentsProps {
   disabled: boolean;
   data: ScheduleDataProps | undefined;
+  categoryData: { [key: string]: string };
   handleInputChange: (
     field: string,
     event: React.ChangeEvent<HTMLInputElement>
@@ -47,6 +40,7 @@ interface ModalContentsProps {
 export const ScheduleModalMain = ({
   disabled,
   data,
+  categoryData,
   handleInputChange,
   handleDataChange,
   handleStarChange,
@@ -57,7 +51,7 @@ export const ScheduleModalMain = ({
       <ContentsItem>
         <DropdownContainer
           initial={data?.category_id}
-          dataList={Category_TEXT}
+          dataList={categoryData}
           onChange={(key) => handleDropdownChange("category_id", key)}
         ></DropdownContainer>
         <TodoTitleInputText
@@ -118,6 +112,7 @@ export const ScheduleModalMain = ({
 type ModalContentsPropsWithoutData = Omit<
   ModalContentsProps,
   | "data"
+  | "categoryData"
   | "handleInputChange"
   | "handleDataChange"
   | "handleStarChange"

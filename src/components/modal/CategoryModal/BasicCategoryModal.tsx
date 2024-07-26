@@ -33,7 +33,7 @@ export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
       newData !== undefined && setInputData(newData);
       setItemData(newData);
     } else {
-      setListData(categoryList);
+      setListData(categoryList.filter((item) => item.id !== "cg_00"));
       const newData = { id: "", color: "", title: "" };
       mode.data !== undefined && mode.alert === true
         ? setInputData(mode.data as CategoryDataProps)
