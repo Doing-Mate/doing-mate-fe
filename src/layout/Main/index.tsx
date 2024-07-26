@@ -15,7 +15,7 @@ export const Main = () => {
   const { onModal, setOnModal } = useModalStateContext();
   const { setModalMode } = useModalModeContext();
   const { scheduleList, setScheduleList } = useScheduleDataContext();
-  const { setCategoryList } = useCategoryDataContext();
+  const { categoryList, setCategoryList } = useCategoryDataContext();
 
   const getAndSetDataList = async () => {
     const categoryData = await getCategoryList();
@@ -36,7 +36,7 @@ export const Main = () => {
 
   useEffect(() => {
     getAndSetDataList();
-  }, []);
+  }, [scheduleList, categoryList]);
 
   const eventClick = (eventId: string) => {
     ScheduleDetailComponent.data = scheduleList.find(

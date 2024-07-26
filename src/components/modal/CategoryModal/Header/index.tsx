@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useModalStateContext } from "../../../../hooks/useModalStateContext";
+import { useModalModeContext } from "../../../../hooks/useModalModeContext";
 import { ModalTitleLabel } from "../../../Label/ModalTitleLabel";
 import { CloseButton } from "../../../Button/CloseButton";
 import theme from "../../../../styles/theme";
@@ -11,8 +12,11 @@ interface ModalHeaderProps {
 
 export const CategoryModalHeader = ({ text }: ModalHeaderProps) => {
   const { onModal, setOnModal } = useModalStateContext();
+  const { modalMode, setModalMode } = useModalModeContext();
 
   const handleModal = () => {
+    modalMode.data = undefined;
+    setModalMode(modalMode);
     setOnModal(!onModal);
   };
 

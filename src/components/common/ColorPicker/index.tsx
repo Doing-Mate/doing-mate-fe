@@ -1,18 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChromePicker } from "react-color";
 
-export const ColorPicker = () => {
+interface ColorPickerProps {
+  categoryColor?: string;
+  onChangeData: (value: string) => void;
+}
+
+export const ColorPicker = ({
+  categoryColor,
+  onChangeData,
+}: ColorPickerProps) => {
   const [color, setColor] = useState<string>("#000");
 
-  const handleChangeComplete = (color: string) => {
-    setColor(color);
-  };
+  useEffect(() => {
+    console.log(categoryColor);
+    categoryColor !== undefined &&
+      categoryColor !== "" &&
+      setColor(categoryColor);
+  }, [categoryColor]);
+
+  useEffect(() => {
+    onChangeData(color);
+  }, [color]);
 
   return (
     <ChromePicker
       styles={{ default: { picker: { width: "300px" } } }}
       color={color}
-      onChange={(color) => handleChangeComplete(color.hex)}
+      onChange={(color) => setColor(color.hex)}
     />
   );
 };

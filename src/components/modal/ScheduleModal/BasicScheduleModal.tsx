@@ -6,9 +6,10 @@ import { ModalProps } from "../../../context/modalPageComponents";
 import { ChangeModalComponent } from "../../ChangeModalComponent";
 import { CRUDButtonList } from "../../Button/CRUDButtonList";
 import { ScheduleAlertDialog } from "../../AlertDialog/ScheduleDeleteAlertDialog";
-import { useInputData } from "../../../hooks/useInputData";
+import { useInputScheduleData } from "../../../hooks/useInputScheduleData";
 import { useEffect, useState } from "react";
 import { useScheduleDataContext } from "../../../hooks/useScheduleDataContext";
+import { useCategoryDataContext } from "../../../hooks/useCategoryDataContext";
 import { ScheduleDataProps } from "../../../context/dataInterface";
 
 interface ModalDataProps {
@@ -23,15 +24,22 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
     handleDataChange,
     handleStarChange,
     handleDropdownChange,
-  } = useInputData();
+  } = useInputScheduleData();
   const { scheduleList } = useScheduleDataContext();
+  const { categoryList } = useCategoryDataContext();
   const [modeData, setModeData] = useState<ScheduleDataProps | undefined>(
-    mode.data
+    mode.data as ScheduleDataProps
   );
 
+  const categoryDataList = {};
+  categoryList.map((item) => {
+    Object.assign(categoryDataList, { [item.id]: item.title });
+  });
+
   useEffect(() => {
+    const data = mode.data as ScheduleDataProps;
     const newData = scheduleList.find(
-      (scheduleItem) => scheduleItem.id === mode.data?.id
+      (scheduleItem) => scheduleItem.id === data?.id
     );
     newData !== undefined && setInputData(newData);
     setModeData(newData);
@@ -54,6 +62,7 @@ export const BasicScheduleModal = ({ mode }: ModalDataProps) => {
       <ScheduleModalMain
         disabled={mode.mainDisabled}
         data={modeData}
+        categoryData={categoryDataList}
         handleInputChange={handleInputChange}
         handleDataChange={handleDataChange}
         handleStarChange={handleStarChange}

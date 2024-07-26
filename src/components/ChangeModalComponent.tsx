@@ -1,8 +1,9 @@
 import { useReducer, useEffect } from "react";
 import reducer from "../reducer/reducer";
 import { useModalModeContext } from "../hooks/useModalModeContext";
-import { ScheduleDataProps } from "../context/dataInterface";
+import { CategoryDataProps, ScheduleDataProps } from "../context/dataInterface";
 import { useScheduleData } from "../hooks/useScheduleData";
+import { useCategoryData } from "../hooks/useCategoryData";
 
 interface footerDataProps {
   text: string;
@@ -13,7 +14,7 @@ interface footerDataProps {
 
 interface ChangeModalComponentProps {
   propsType: "detail" | "modify" | "add" | "list" | "item";
-  inputData?: ScheduleDataProps;
+  inputData?: ScheduleDataProps | CategoryDataProps;
 }
 
 export const ChangeModalComponent = ({
@@ -22,7 +23,9 @@ export const ChangeModalComponent = ({
 }: ChangeModalComponentProps): footerDataProps[] => {
   const { modalMode, setModalMode } = useModalModeContext();
   const [newMode, dispatch] = useReducer(reducer, modalMode);
-  const { AddData, ModifyData, DeleteData } = useScheduleData();
+  const { AddScheduleData, ModifyScheduleData, DeleteScheduleData } =
+    useScheduleData();
+  const { DeleteCategoryData, ModifyCategoryData } = useCategoryData();
 
   interface PageTypeProps {
     pageType:
@@ -59,7 +62,7 @@ export const ChangeModalComponent = ({
         {
           text: "삭제",
           onClick: () => moveModal({ pageType: "delete" }),
-          OKClick: () => DeleteData(inputData!),
+          OKClick: () => DeleteScheduleData(inputData as ScheduleDataProps),
           backClick: () => moveModal({ pageType: "detail" }),
         },
         {
@@ -78,7 +81,8 @@ export const ChangeModalComponent = ({
         {
           text: "저장",
           onClick: () => {
-            ModifyData(inputData!) && moveModal({ pageType: "detail" });
+            ModifyScheduleData(inputData as ScheduleDataProps) &&
+              moveModal({ pageType: "detail" });
           },
         },
       ];
@@ -87,7 +91,8 @@ export const ChangeModalComponent = ({
         {
           text: "저장",
           onClick: () => {
-            AddData(inputData!) && moveModal({ pageType: "detail" });
+            AddScheduleData(inputData as ScheduleDataProps) &&
+              moveModal({ pageType: "detail" });
           },
         },
       ];
@@ -98,17 +103,29 @@ export const ChangeModalComponent = ({
           text: "취소",
           onClick: () => moveModal({ pageType: "list" }),
         },
-        { text: "저장", onClick: () => moveModal({ pageType: "list" }) },
+        {
+          text: "저장",
+          onClick: () => {
+            ModifyCategoryData(inputData as CategoryDataProps) &&
+              moveModal({ pageType: "list" });
+          },
+        },
       ];
     case "list":
       return [
         {
           text: "click",
-          onClick: () => moveModal({ pageType: "item" }),
+          onClick: () => {
+            moveModal({ pageType: "item" });
+          },
         },
         {
           text: "delete",
           onClick: () => moveModal({ pageType: "categoryDelete" }),
+          OKClick: () => {
+            DeleteCategoryData(inputData as CategoryDataProps);
+            moveModal({ pageType: "list" });
+          },
           backClick: () => moveModal({ pageType: "list" }),
         },
       ];

@@ -3,6 +3,11 @@ import { CategoryListLabel } from "../../../Label/CategoryListLabel";
 import { ColorBox } from "../../../common/ColorBox";
 import { CloseButton } from "../../../Button/CloseButton";
 import CloseIcon from "../../../../assets/icons/ic_close.png";
+import { CategoryDataProps } from "../../../../context/dataInterface";
+import {
+  CategoryItemComponent,
+  CategoryDeleteComponent,
+} from "../../../../context/modalPageComponents";
 
 interface footerDataProps {
   text: string;
@@ -10,28 +15,33 @@ interface footerDataProps {
 }
 
 interface onClickDataProps {
+  data?: CategoryDataProps[] | undefined;
   onClickData: footerDataProps[];
 }
 
-export const CategoryListMain = ({ onClickData }: onClickDataProps) => {
-  const CategoryListInfo = [
-    { title: "생일", color: "#FF7F7F" },
-    { title: "약속", color: "#7FC9FF" },
-  ];
+export const CategoryListMain = ({ data, onClickData }: onClickDataProps) => {
+  const itemClick = (item?: CategoryDataProps) => {
+    CategoryItemComponent.data = item;
+    onClickData[0].onClick();
+  };
 
+  const deleteItem = (item?: CategoryDataProps) => {
+    CategoryDeleteComponent.data = item;
+    onClickData[1].onClick();
+  };
   return (
     <CategoryList>
-      {CategoryListInfo.map((data) => (
+      {data?.map((item) => (
         <CategoryListItem>
-          <ItemButton onClick={onClickData[0].onClick}>
-            <ColorBox color={data.color} />
-            <CategoryListLabel text={data.title} />
+          <ItemButton key={item.id} onClick={() => itemClick(item)}>
+            <ColorBox color={item.color} />
+            <CategoryListLabel text={item.title} />
           </ItemButton>
-          <CloseButton icon={CloseIcon} onClick={onClickData[1].onClick} />
+          <CloseButton icon={CloseIcon} onClick={() => deleteItem(item)} />
         </CategoryListItem>
       ))}
       <CategoryListItem>
-        <ItemButton onClick={onClickData[0].onClick}>
+        <ItemButton onClick={() => itemClick()}>
           <CategoryListLabel text="+ 카테고리 추가" />
         </ItemButton>
       </CategoryListItem>

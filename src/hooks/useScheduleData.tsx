@@ -6,20 +6,26 @@ export const useScheduleData = () => {
   const { scheduleList, setScheduleList } = useScheduleDataContext();
 
   const checkValidate = (newData: ScheduleDataProps): boolean => {
-    let result = true;
-    const checkValidate = [
-      "id",
-      "category_id",
-      "title",
-      "start",
-      "end",
-      "repetition",
-      "importance",
-    ];
+    let result = false;
 
-    Object.entries(newData).find((item) => {
-      checkValidate.includes(item[0]) && item[1] === "" && (result = false);
-    });
+    const checkValidate = {
+      category_id: "카테고리",
+      title: "제목",
+      start: "기간",
+      end: "기간",
+      repetition: "반복여부",
+      importance: "중요도",
+    };
+
+    const check = Object.entries(checkValidate).find((checkItem) =>
+      Object.entries(newData).find(
+        (dataItem) => checkItem[0] === dataItem[0] && dataItem[1] === ""
+      )
+    );
+
+    check !== undefined
+      ? alert(check[1] + "을/를 입력해주세요.")
+      : (result = true);
     return result;
   };
 
@@ -30,7 +36,7 @@ export const useScheduleData = () => {
     return hasId !== undefined ? createId(data, ++num) : id;
   };
 
-  const AddData = (newData: ScheduleDataProps): boolean => {
+  const AddScheduleData = (newData: ScheduleDataProps): boolean => {
     let result = false;
 
     newData.id = createId(newData.start.split(" ")[0], 1);
@@ -38,12 +44,12 @@ export const useScheduleData = () => {
     checkValidate(newData)
       ? (result = true) &&
         (postSchedule(newData), setScheduleList([...scheduleList, newData]))
-      : alert("필수항목을 입력해주세요.");
+      : [];
 
     return result;
   };
 
-  const DeleteData = (newData: ScheduleDataProps) => {
+  const DeleteScheduleData = (newData: ScheduleDataProps) => {
     const newScheduleList = scheduleList.filter(
       (item) => item.id !== newData.id
     );
@@ -52,19 +58,20 @@ export const useScheduleData = () => {
     setScheduleList(newScheduleList);
   };
 
-  const ModifyData = (newData: ScheduleDataProps): boolean => {
+  const ModifyScheduleData = (newData: ScheduleDataProps): boolean => {
     let result = false;
-    const newScheduleList = scheduleList.filter(
-      (item) => item.id !== newData.id
+
+    const newScheduleList = scheduleList.map((item) =>
+      item.id === newData.id ? newData : item
     );
 
     checkValidate(newData)
       ? (result = true) &&
-        (postSchedule(newData), setScheduleList([...newScheduleList, newData]))
-      : alert("필수항목을 입력해주세요.");
+        (postSchedule(newData), setScheduleList(newScheduleList))
+      : [];
 
     return result;
   };
 
-  return { AddData, DeleteData, ModifyData };
+  return { AddScheduleData, DeleteScheduleData, ModifyScheduleData };
 };

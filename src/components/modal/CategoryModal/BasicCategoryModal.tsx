@@ -6,36 +6,51 @@ import { CategoryItemMain } from "./Main/CategoryItemMain";
 import { CategoryAlertDialog } from "../../AlertDialog/CategoryDeleteAlertDialog";
 import { ModalProps } from "../../../context/modalPageComponents";
 import { ChangeModalComponent } from "../../ChangeModalComponent";
-import { CRUDButton } from "../../Button/CRUDButton";
-import theme from "../../../styles/theme";
+import { CRUDButtonList } from "../../Button/CRUDButtonList";
+import { CategoryDataProps } from "../../../context/dataInterface";
+import { useInputCategoryData } from "../../../hooks/useInputCategoryData";
+import { useEffect, useState } from "react";
+import { useCategoryDataContext } from "../../../hooks/useCategoryDataContext";
 
 interface ModalDataProps {
   mode: ModalProps;
 }
 
 export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
+  const { inputData, setInputData, handleTitleChange, handleColorChange } =
+    useInputCategoryData();
+  const { categoryList } = useCategoryDataContext();
+
+  const [itemData, setItemData] = useState<CategoryDataProps | undefined>();
+  const [listData, setListData] = useState<CategoryDataProps[] | undefined>();
+
+  useEffect(() => {
+    if (mode.propsType === "item") {
+      const data = mode.data as CategoryDataProps;
+      const newData = categoryList.find(
+        (categoryItem) => categoryItem.id === data?.id
+      );
+      newData !== undefined && setInputData(newData);
+      setItemData(newData);
+    } else {
+      setListData(categoryList.filter((item) => item.id !== "cg_00"));
+      const newData = { id: "", color: "", title: "" };
+      mode.data !== undefined && mode.alert === true
+        ? setInputData(mode.data as CategoryDataProps)
+        : (setInputData(newData), setItemData(newData));
+    }
+  }, [mode]);
+
   const footerData = ChangeModalComponent({
     propsType: mode.propsType,
-    inputData: mode.data,
+    inputData: inputData,
   });
+
   mode.footerButtons =
     mode.propsType === "item"
-      ? [
-          <CRUDButton
-            key="footerBtn_01"
-            text={footerData[0].text}
-            colorType={theme.colors.secondary}
-            hoverColorType={"#e498ac"}
-            onClick={footerData[0].onClick}
-          />,
-          <CRUDButton
-            key="footerBtn_02"
-            text={footerData[1].text}
-            colorType={theme.colors.primary}
-            hoverColorType={"#92b5ec"}
-            onClick={footerData[1].onClick}
-          />,
-        ]
+      ? CRUDButtonList({
+          footerData: footerData,
+        })
       : [];
 
   return (
@@ -44,14 +59,22 @@ export const BasicCategoryModal = ({ mode }: ModalDataProps) => {
       footer={<CategoryModalFooter children={mode.footerButtons} />}
     >
       {mode.propsType === "item" ? (
-        <CategoryItemMain />
+        <CategoryItemMain
+          data={itemData as CategoryDataProps}
+          handleTitleChange={handleTitleChange}
+          handleColorChange={handleColorChange}
+        />
       ) : (
         <>
-          <CategoryListMain onClickData={footerData} />
+          <CategoryListMain
+            data={listData as CategoryDataProps[]}
+            onClickData={footerData}
+          />
           {mode.alert && (
             <CategoryAlertDialog
               Open={mode.alert}
-              movePage={footerData[1].backClick!}
+              okClick={footerData[1].OKClick!}
+              backClick={footerData[1].backClick!}
             />
           )}
         </>
