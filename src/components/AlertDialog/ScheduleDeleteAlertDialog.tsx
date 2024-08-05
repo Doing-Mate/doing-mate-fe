@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useModalStateContext } from "../../hooks/useModalStateContext";
+import { useModalStateContext } from "../../hooks/useContext/useModalStateContext";
 import { AlertDialog } from "../common/Dialog";
 
 interface ScheduleAlertDialogProps {

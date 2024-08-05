@@ -5,15 +5,22 @@ import styled from "styled-components";
 interface CheckboxProps {
   colorType?: string;
   text?: string;
+  onChange?: () => void;
 }
 
-export const Checkbox = ({ colorType, text, ...props }: CheckboxProps) => {
+export const Checkbox = ({
+  colorType,
+  text,
+  onChange,
+  ...props
+}: CheckboxProps) => {
   return (
     <StyledCheckbox
       control={
         <MuiCheckbox
           disableRipple
           defaultChecked
+          onChange={onChange}
           sx={{
             color: colorType,
             "&.Mui-checked": {

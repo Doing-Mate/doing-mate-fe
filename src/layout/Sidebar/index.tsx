@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import { ImportantLevelBar } from "./ImportantLevelBar";
 import { CategoryBar } from "./CategoryBar";
+import { useFilteringData } from "../../hooks/useFilteringData";
 
 export const SideBar = () => {
+  const { handleCheckbox, handleCheckImportance } = useFilteringData();
   return (
     <StyledSideBar>
-      <ImportantLevelBar />
-      <CategoryBar />
+      <ImportantLevelBar handleCheckImportance={handleCheckImportance} />
+      <CategoryBar handleCheckbox={handleCheckbox} />
     </StyledSideBar>
   );
 };

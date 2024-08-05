@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ScheduleDataProps } from "../context/dataInterface";
+import { ScheduleDataProps } from "../../context/dataInterface";
 
 export const useInputScheduleData = () => {
   const [inputData, setInputData] = useState<ScheduleDataProps>({

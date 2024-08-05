@@ -1,4 +1,4 @@
-import { useCategoryDataContext } from "./useCategoryDataContext";
+import { useCategoryDataContext } from "./useContext/useCategoryDataContext";
 import { CategoryDataProps } from "../context/dataInterface";
 import { postCategory, deleteCategory } from "../api/category";
 

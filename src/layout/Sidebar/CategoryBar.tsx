@@ -1,29 +1,21 @@
-import { useEffect } from "react";
 import styled from "styled-components";
 import { CategoryTitleLabel } from "../../components/Label/CategoryTitleLabel";
 import { Checkbox } from "../../components/common/Checkbox";
 import { PlusButton } from "../../components/Button/PlusButton";
-import { useModalStateContext } from "../../hooks/useModalStateContext";
-import { useModalModeContext } from "../../hooks/useModalModeContext";
+import { useModalStateContext } from "../../hooks/useContext/useModalStateContext";
+import { useModalModeContext } from "../../hooks/useContext/useModalModeContext";
 import { CategoryListComponent } from "../../context/modalPageComponents";
 import PlusIcon from "../../assets/icons/ic_plus.png";
-import { getCategoryList } from "../../api/category";
-import { useCategoryDataContext } from "../../hooks/useCategoryDataContext";
+import { useCategoryDataContext } from "../../hooks/useContext/useCategoryDataContext";
 
-export const CategoryBar = () => {
+interface CategoryBarProps {
+  handleCheckbox: (id: string) => void;
+}
+
+export const CategoryBar = ({ handleCheckbox }: CategoryBarProps) => {
   const { onModal, setOnModal } = useModalStateContext();
   const { setModalMode } = useModalModeContext();
-  const { categoryList, setCategoryList } = useCategoryDataContext();
-
-  const getAndSetDataList = async () => {
-    const categoryList = await getCategoryList();
-
-    setCategoryList(categoryList);
-  };
-
-  useEffect(() => {
-    getAndSetDataList();
-  }, []);
+  const { categoryList } = useCategoryDataContext();
 
   const handleModal = () => {
     setModalMode(CategoryListComponent);
@@ -37,7 +29,12 @@ export const CategoryBar = () => {
         <PlusButton icon={PlusIcon} onClick={handleModal} />
       </CategoryTitleDiv>
       {categoryList.map((item) => (
-        <Checkbox key={item.id} colorType={item.color} text={item.title} />
+        <Checkbox
+          key={item.id}
+          colorType={item.color}
+          text={item.title}
+          onChange={() => handleCheckbox(item.id)}
+        />
       ))}
     </CategoryBarDiv>
   );

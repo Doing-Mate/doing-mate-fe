@@ -13,7 +13,6 @@ export const ColorPicker = ({
   const [color, setColor] = useState<string>("#000");
 
   useEffect(() => {
-    console.log(categoryColor);
     categoryColor !== undefined &&
       categoryColor !== "" &&
       setColor(categoryColor);

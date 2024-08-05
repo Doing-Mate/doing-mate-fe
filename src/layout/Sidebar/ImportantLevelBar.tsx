@@ -4,31 +4,45 @@ import { Checkbox } from "../../components/common/Checkbox";
 import { Icon } from "../../components/common/Icon";
 import StarIcon from "../../assets/icons/ic_star.png";
 
-export const ImportantLevelBar = () => {
+interface ImportantLevelBarProps {
+  handleCheckImportance: (id: string) => void;
+}
+
+export const ImportantLevelBar = ({
+  handleCheckImportance,
+}: ImportantLevelBarProps) => {
   return (
     <ImportantLevelBarDiv key={"leverbar"}>
       <CategoryTitleLabel text="중요도" />
-      <ImportantLevelItem num={5} />
-      <ImportantLevelItem num={4} />
-      <ImportantLevelItem num={3} />
-      <ImportantLevelItem num={2} />
-      <ImportantLevelItem num={1} />
+      <ImportantLevelItem num={5} onclick={handleCheckImportance} />
+      <ImportantLevelItem num={4} onclick={handleCheckImportance} />
+      <ImportantLevelItem num={3} onclick={handleCheckImportance} />
+      <ImportantLevelItem num={2} onclick={handleCheckImportance} />
+      <ImportantLevelItem num={1} onclick={handleCheckImportance} />
     </ImportantLevelBarDiv>
+  );
+};
+
+interface ImportantLevelItemProps {
+  num: number;
+  onclick: (id: string) => void;
+}
+
+const ImportantLevelItem = ({ num, onclick }: ImportantLevelItemProps) => {
+  return (
+    <ImportantLevelItemDiv>
+      <Checkbox
+        key={"starLevel_" + num}
+        onChange={() => onclick("starLevel_" + num)}
+      />
+      <StarLevel num={num} />
+    </ImportantLevelItemDiv>
   );
 };
 
 interface StarLevelProps {
   num: number;
 }
-
-const ImportantLevelItem = ({ num }: StarLevelProps) => {
-  return (
-    <ImportantLevelItemDiv>
-      <Checkbox key={"starLevel_" + num} />
-      <StarLevel num={num} />
-    </ImportantLevelItemDiv>
-  );
-};
 
 const StarLevel = ({ num }: StarLevelProps) => {
   return (
