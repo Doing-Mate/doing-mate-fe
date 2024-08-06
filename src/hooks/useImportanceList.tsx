@@ -17,9 +17,9 @@ export const useImportanceList = () => {
       );
   }, []);
 
-  const handleCheckImportance = (id: string) => {
+  const handleCheckImportance = (id: string, value: boolean) => {
     const newCheckedImportanceList = checkedImportanceList.map((item) =>
-      item[0] === id ? [item[0], !item[1]] : item
+      item[0] === id ? [item[0], value] : item
     );
     setCheckedImportanceList(newCheckedImportanceList as [string, boolean][]);
   };

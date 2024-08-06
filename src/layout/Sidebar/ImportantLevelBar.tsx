@@ -5,7 +5,7 @@ import { Icon } from "../../components/common/Icon";
 import StarIcon from "../../assets/icons/ic_star.png";
 
 interface ImportantLevelBarProps {
-  handleCheckImportance: (id: string) => void;
+  handleCheckImportance: (id: string, value: boolean) => void;
 }
 
 export const ImportantLevelBar = ({
@@ -25,7 +25,7 @@ export const ImportantLevelBar = ({
 
 interface ImportantLevelItemProps {
   num: number;
-  onclick: (id: string) => void;
+  onclick: (id: string, value: boolean) => void;
 }
 
 const ImportantLevelItem = ({ num, onclick }: ImportantLevelItemProps) => {
@@ -33,7 +33,7 @@ const ImportantLevelItem = ({ num, onclick }: ImportantLevelItemProps) => {
     <ImportantLevelItemDiv>
       <Checkbox
         key={"starLevel_" + num}
-        onChange={() => onclick("starLevel_" + num)}
+        onChange={(value) => onclick("starLevel_" + num, value)}
       />
       <StarLevel num={num} />
     </ImportantLevelItemDiv>

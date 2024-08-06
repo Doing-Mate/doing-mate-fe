@@ -5,6 +5,7 @@ export interface ScheduleDataProps {
   start: string;
   end: string;
   repetition: string;
+  allDay: boolean;
   importance: number;
   place?: string;
   comment?: string;

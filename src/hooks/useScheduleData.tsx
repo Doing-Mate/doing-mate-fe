@@ -13,7 +13,6 @@ export const useScheduleData = () => {
       title: "제목",
       start: "기간",
       end: "기간",
-      repetition: "반복여부",
       importance: "중요도",
     };
 

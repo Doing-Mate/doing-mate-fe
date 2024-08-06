@@ -6,16 +6,16 @@ export const useCheckedBoxList = () => {
   const [checkedBoxList, setCheckedBoxList] = useState<[string, boolean][]>([]);
 
   useEffect(() => {
-    categoryList.length !== 0 && checkedBoxList.length === 0
+    checkedBoxList.length === 0
       ? setCheckedBoxList(
           categoryList.map((item) => [item.id, true] as [string, boolean])
         )
       : handleCheckedBoxList();
   }, [categoryList]);
 
-  const handleCheckbox = (id: string) => {
+  const handleCheckbox = (id: string, value: boolean) => {
     const newCheckedBoxList = checkedBoxList.map((item) =>
-      item[0] === id ? [item[0], !item[1]] : item
+      item[0] === id ? [item[0], value] : item
     );
     setCheckedBoxList(newCheckedBoxList as [string, boolean][]);
   };

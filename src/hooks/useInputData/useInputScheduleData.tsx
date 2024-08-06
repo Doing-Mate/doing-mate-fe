@@ -8,21 +8,19 @@ export const useInputScheduleData = () => {
     title: "",
     start: "00000000 00:00",
     end: "00000000 00:00",
+    allDay: true,
     repetition: "",
     importance: 0,
   });
 
-  const handleInputChange = (
-    field: string,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleInputChange = (field: string, value: string) => {
     setInputData((prevState) => ({
       ...prevState,
-      [field]: event.target.value,
+      [field]: value,
     }));
   };
 
-  const handleDataChange = async (
+  const handleDataChange = (
     pickerType: "date" | "time",
     dataType: "start" | "end",
     value: string
@@ -56,6 +54,13 @@ export const useInputScheduleData = () => {
     }));
   };
 
+  const handleAllDayChange = (value: boolean) => {
+    setInputData((prevState) => ({
+      ...prevState,
+      allDay: value,
+    }));
+  };
+
   return {
     inputData,
     setInputData,
@@ -63,5 +68,6 @@ export const useInputScheduleData = () => {
     handleDataChange,
     handleStarChange,
     handleDropdownChange,
+    handleAllDayChange,
   };
 };

@@ -22,7 +22,7 @@ export const useFilteringData = () => {
   }, []);
 
   useEffect(() => {
-    matchEventColor(selectedScheduleList);
+    matchCategoryColor(selectedScheduleList);
   }, [categoryList]);
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export const useFilteringData = () => {
     const filteredList1 = await filteringByCheckbox();
     const filteredList2 = await filteringByImportance();
 
-    matchEventColor(
+    matchCategoryColor(
       filteredList1.filter((item) => filteredList2.includes(item))
     );
   };
@@ -45,7 +45,7 @@ export const useFilteringData = () => {
     setAllScheduleList(scheduleData);
   };
 
-  const matchEventColor = (scheduleList: ScheduleDataProps[]) => {
+  const matchCategoryColor = (scheduleList: ScheduleDataProps[]) => {
     const newScheduleList = scheduleList.map((scheduleItem) => {
       const category = categoryList.find(
         (categoryItem) => categoryItem.id === scheduleItem.category_id

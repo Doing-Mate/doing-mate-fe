@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { InputText } from "../common/InputText";
 import styled from "styled-components";
 
@@ -6,12 +7,19 @@ const StyledTodoTitleInputText = styled(InputText)`
 `;
 interface TodoTitleInputTextProps {
   text?: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeData?: (value: string) => void;
 }
+
 export const TodoTitleInputText = ({
   text,
-  onChange,
+  onChangeData,
 }: TodoTitleInputTextProps) => {
+  const [value, setValue] = useState(text);
+
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
+    onChangeData!(event.target.value);
+  };
   return (
     <StyledTodoTitleInputText
       sizeType={"medium"}
@@ -19,8 +27,7 @@ export const TodoTitleInputText = ({
       borderType={"round"}
       placeholder="할 일 제목"
       onChange={onChange}
-      required={true}
-      value={text}
-    ></StyledTodoTitleInputText>
+      value={value}
+    />
   );
 };

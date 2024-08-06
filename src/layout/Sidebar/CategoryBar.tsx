@@ -9,7 +9,7 @@ import PlusIcon from "../../assets/icons/ic_plus.png";
 import { useCategoryDataContext } from "../../hooks/useContext/useCategoryDataContext";
 
 interface CategoryBarProps {
-  handleCheckbox: (id: string) => void;
+  handleCheckbox: (id: string, value: boolean) => void;
 }
 
 export const CategoryBar = ({ handleCheckbox }: CategoryBarProps) => {
@@ -33,7 +33,7 @@ export const CategoryBar = ({ handleCheckbox }: CategoryBarProps) => {
           key={item.id}
           colorType={item.color}
           text={item.title}
-          onChange={() => handleCheckbox(item.id)}
+          onChange={(value) => handleCheckbox(item.id, value)}
         />
       ))}
     </CategoryBarDiv>
