@@ -1,6 +1,6 @@
 import { useReducer, useEffect } from "react";
 import reducer from "../reducer/reducer";
-import { useModalModeContext } from "../hooks/useModalModeContext";
+import { useModalModeContext } from "../hooks/useContext/useModalModeContext";
 import { CategoryDataProps, ScheduleDataProps } from "../context/dataInterface";
 import { useScheduleData } from "../hooks/useScheduleData";
 import { useCategoryData } from "../hooks/useCategoryData";
@@ -53,7 +53,6 @@ export const ChangeModalComponent = ({
 
   useEffect(() => {
     setModalMode(newMode);
-    console.log(newMode.propsType);
   }, [newMode]);
 
   switch (propsType) {

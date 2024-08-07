@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { useModalStateContext } from "../../../../hooks/useModalStateContext";
-import { useModalModeContext } from "../../../../hooks/useModalModeContext";
+import { useModalStateContext } from "../../../../hooks/useContext/useModalStateContext";
+import { useModalModeContext } from "../../../../hooks/useContext/useModalModeContext";
 import { ModalTitleLabel } from "../../../Label/ModalTitleLabel";
 import { CloseButton } from "../../../Button/CloseButton";
 import theme from "../../../../styles/theme";

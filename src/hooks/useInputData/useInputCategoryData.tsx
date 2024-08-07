@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CategoryDataProps } from "../context/dataInterface";
+import { CategoryDataProps } from "../../context/dataInterface";
 
 export const useInputCategoryData = () => {
   const [inputData, setInputData] = useState<CategoryDataProps>({

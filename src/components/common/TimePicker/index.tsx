@@ -3,23 +3,37 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { TimePicker as MuiTimePicker } from "@mui/x-date-pickers/TimePicker/TimePicker";
 import dayjs, { Dayjs } from "dayjs";
+import { ScheduleDataProps } from "../../../context/dataInterface";
 
 interface TimePickerProps {
   dataType: "start" | "end";
   dataTime?: string;
   onChangeData: (value: string) => void;
+  inputData?: ScheduleDataProps;
 }
 
 export const TimePicker = ({
   dataType,
   dataTime,
   onChangeData,
+  inputData,
 }: TimePickerProps) => {
   const [startTime, setStartTime] = useState<Dayjs | null>(null);
 
   useEffect(() => {
-    startTime !== null && onChangeData(startTime!.format("HH:mm").toString());
-  }, [startTime]);
+    inputData !== undefined
+      ? inputData?.allDay === true
+        ? dataType === "start"
+          ? handleTime(dayjs("00:00", "HH:mm"))
+          : handleTime(dayjs("23:59", "HH:mm"))
+        : []
+      : [];
+  }, [inputData?.allDay]);
+
+  const handleTime = (value: dayjs.Dayjs) => {
+    setStartTime(value);
+    onChangeData(value.format("HH:mm").toString());
+  };
 
   useEffect(() => {
     dataTime !== undefined
@@ -34,7 +48,7 @@ export const TimePicker = ({
       <MuiTimePicker
         label=""
         value={startTime}
-        onChange={(newTime) => setStartTime(newTime)}
+        onChange={(newTime) => handleTime(newTime!)}
         sx={{
           height: "fit-content",
           ".MuiOutlinedInput-root": {

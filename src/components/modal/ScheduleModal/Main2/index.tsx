@@ -5,21 +5,15 @@ import { DatePicker } from "../../../common/DatePicker";
 import { TimePicker } from "../../../common/TimePicker";
 import { SmallTextLabel } from "../../../Label/SmallTextLabel";
 import { StarRating } from "../../../common/StarRating";
+import { Checkbox } from "../../../common/Checkbox";
 import { TodoPlaceInputText } from "../../../InputText/TodoPlaceInputText";
 import { TodoMemoInputTextarea } from "../../../InputTextarea/TodoMemoInputTextarea";
 import { ScheduleDataProps } from "../../../../context/dataInterface";
 
-const Repetition_TEXT = {
-  NONE: "반복 안함",
-  HOUR: "1시간마다 반복",
-  DAY: "하루마다 반복",
-  WEEK: "일주일마다 반복",
-  MONTH: "한달마다 반복",
-};
-
 interface ModalContentsProps {
   disabled: boolean;
   data: ScheduleDataProps | undefined;
+  inputData: ScheduleDataProps;
   categoryData: { [key: string]: string };
   handleInputChange: (field: string, value: string) => void;
   handleDataChange: (
@@ -32,16 +26,19 @@ interface ModalContentsProps {
     field: "repetition" | "category_id",
     key: string
   ) => void;
+  handleAllDayChange: (value: boolean) => void;
 }
 
 export const ScheduleModalMain = ({
   disabled,
   data,
+  inputData,
   categoryData,
   handleInputChange,
   handleDataChange,
   handleStarChange,
   handleDropdownChange,
+  handleAllDayChange,
 }: ModalContentsProps) => {
   return (
     <StyledContents disabled={disabled}>
@@ -53,7 +50,7 @@ export const ScheduleModalMain = ({
         ></DropdownContainer>
         <TodoTitleInputText
           text={data?.title}
-          onChange={(value) => handleInputChange("title", value)}
+          onChangeData={(value) => handleInputChange("title", value)}
         />
       </ContentsItem>
       <ContentsItem>
@@ -65,6 +62,7 @@ export const ScheduleModalMain = ({
           dataType="start"
           dataTime={data?.start}
           onChangeData={(value) => handleDataChange("time", "start", value)}
+          inputData={inputData}
         />
         <SmallTextLabel text="~" />
         <DatePicker
@@ -75,31 +73,35 @@ export const ScheduleModalMain = ({
           dataType="end"
           dataTime={data?.end}
           onChangeData={(value) => handleDataChange("time", "end", value)}
+          inputData={inputData}
         />
       </ContentsItem>
       <ContentsItem>
-        <DropdownContainer
-          initial={data?.repetition}
-          dataList={Repetition_TEXT}
-          onChange={(key) => handleDropdownChange("repetition", key)}
-        ></DropdownContainer>
         <StarRatingDiv>
           <StarRating
             value={data?.importance}
             onChange={(value) => handleStarChange(value)}
           />
         </StarRatingDiv>
+        <CheckboxDiv>
+          <Checkbox
+            key="isAllDay"
+            text="하루종일"
+            onChange={(value) => handleAllDayChange(value)}
+            inputData={inputData}
+          />
+        </CheckboxDiv>
       </ContentsItem>
       <ContentsItem>
         <TodoPlaceInputText
           text={data?.place}
-          onChange={(event) => handleInputChange("place", event)}
+          onChangeData={(value) => handleInputChange("place", value)}
         />
       </ContentsItem>
       <ContentsItem>
         <TodoMemoInputTextarea
           text={data?.comment}
-          onChange={(event) => handleInputChange("comment", event)}
+          onChangeData={(value) => handleInputChange("comment", value)}
         />
       </ContentsItem>
     </StyledContents>
@@ -108,12 +110,14 @@ export const ScheduleModalMain = ({
 
 type ModalContentsPropsWithoutData = Omit<
   ModalContentsProps,
+  | "inputData"
   | "data"
   | "categoryData"
   | "handleInputChange"
   | "handleDataChange"
   | "handleStarChange"
   | "handleDropdownChange"
+  | "handleAllDayChange"
   | "setInputText"
 >;
 
@@ -140,5 +144,9 @@ const ContentsItem = styled.div`
 `;
 
 const StarRatingDiv = styled.div`
-  margin-left: 10px;
+  margin-left: 5px;
+`;
+
+const CheckboxDiv = styled.div`
+  margin-left: auto;
 `;

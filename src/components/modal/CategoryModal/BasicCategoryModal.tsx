@@ -8,9 +8,9 @@ import { ModalProps } from "../../../context/modalPageComponents";
 import { ChangeModalComponent } from "../../ChangeModalComponent";
 import { CRUDButtonList } from "../../Button/CRUDButtonList";
 import { CategoryDataProps } from "../../../context/dataInterface";
-import { useInputCategoryData } from "../../../hooks/useInputCategoryData";
+import { useInputCategoryData } from "../../../hooks/useInputData/useInputCategoryData";
 import { useEffect, useState } from "react";
-import { useCategoryDataContext } from "../../../hooks/useCategoryDataContext";
+import { useCategoryDataContext } from "../../../hooks/useContext/useCategoryDataContext";
 
 interface ModalDataProps {
   mode: ModalProps;

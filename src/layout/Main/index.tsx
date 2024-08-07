@@ -1,45 +1,19 @@
-import { useEffect } from "react";
 import { Calendar } from "../../components/common/Calendar";
-import { useModalStateContext } from "../../hooks/useModalStateContext";
-import { useModalModeContext } from "../../hooks/useModalModeContext";
-import { useScheduleDataContext } from "../../hooks/useScheduleDataContext";
-import { useCategoryDataContext } from "../../hooks/useCategoryDataContext";
+import { useModalStateContext } from "../../hooks/useContext/useModalStateContext";
+import { useModalModeContext } from "../../hooks/useContext/useModalModeContext";
 import {
   ScheduleDetailComponent,
   ScheduleAddComponent,
 } from "../../context/modalPageComponents";
-import { getScheduleList } from "../../api/schedule";
-import { getCategoryList } from "../../api/category";
+import { useSelectedScheduleDataContext } from "../../hooks/useContext/useSelectedScheduleDataContext";
 
 export const Main = () => {
   const { onModal, setOnModal } = useModalStateContext();
   const { setModalMode } = useModalModeContext();
-  const { scheduleList, setScheduleList } = useScheduleDataContext();
-  const { categoryList, setCategoryList } = useCategoryDataContext();
-
-  const getAndSetDataList = async () => {
-    const categoryData = await getCategoryList();
-    const scheduleData = await getScheduleList();
-    const scheduleList = scheduleData.map((scheduleItem) => {
-      const category = categoryData.find(
-        (categoryItem) => categoryItem.id === scheduleItem.category_id
-      );
-      return {
-        ...scheduleItem,
-        color: category?.color || scheduleItem.color,
-      };
-    });
-
-    setCategoryList(categoryData);
-    setScheduleList(scheduleList);
-  };
-
-  useEffect(() => {
-    getAndSetDataList();
-  }, [scheduleList, categoryList]);
+  const { selectedScheduleList } = useSelectedScheduleDataContext();
 
   const eventClick = (eventId: string) => {
-    ScheduleDetailComponent.data = scheduleList.find(
+    ScheduleDetailComponent.data = selectedScheduleList.find(
       (scheduleItem) => scheduleItem.id === eventId
     );
     setModalMode(ScheduleDetailComponent);
@@ -53,7 +27,7 @@ export const Main = () => {
 
   return (
     <Calendar
-      events={scheduleList}
+      events={selectedScheduleList}
       eventClick={eventClick}
       todoPlusClick={todoPlusClick}
     />

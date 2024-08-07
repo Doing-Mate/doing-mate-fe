@@ -1,9 +1,9 @@
-import { useScheduleDataContext } from "./useScheduleDataContext";
 import { ScheduleDataProps } from "../context/dataInterface";
 import { postSchedule, deleteSchedule } from "../api/schedule";
+import { useAllScheduleDataContext } from "./useContext/useAllScheduleDataContext";
 
 export const useScheduleData = () => {
-  const { scheduleList, setScheduleList } = useScheduleDataContext();
+  const { allScheduleList, setAllScheduleList } = useAllScheduleDataContext();
 
   const checkValidate = (newData: ScheduleDataProps): boolean => {
     let result = false;
@@ -13,7 +13,6 @@ export const useScheduleData = () => {
       title: "제목",
       start: "기간",
       end: "기간",
-      repetition: "반복여부",
       importance: "중요도",
     };
 
@@ -31,7 +30,9 @@ export const useScheduleData = () => {
 
   const createId = (data: string, num: number): string => {
     const id = data + "_" + String(num).padStart(2, "0");
-    const hasId = scheduleList.find((scheduleItem) => scheduleItem.id === id);
+    const hasId = allScheduleList.find(
+      (scheduleItem) => scheduleItem.id === id
+    );
 
     return hasId !== undefined ? createId(data, ++num) : id;
   };
@@ -43,31 +44,41 @@ export const useScheduleData = () => {
 
     checkValidate(newData)
       ? (result = true) &&
-        (postSchedule(newData), setScheduleList([...scheduleList, newData]))
+        (postSchedule(newData),
+        setAllScheduleList([...allScheduleList, newData]))
       : [];
 
     return result;
   };
 
   const DeleteScheduleData = (newData: ScheduleDataProps) => {
-    const newScheduleList = scheduleList.filter(
+    const newScheduleList = allScheduleList.filter(
       (item) => item.id !== newData.id
     );
 
     deleteSchedule(newData.id);
-    setScheduleList(newScheduleList);
+    setAllScheduleList(newScheduleList);
   };
 
   const ModifyScheduleData = (newData: ScheduleDataProps): boolean => {
     let result = false;
 
-    const newScheduleList = scheduleList.map((item) =>
-      item.id === newData.id ? newData : item
+    // const newScheduleList = await allScheduleList.map((item) =>
+    //   item.id === newData.id ? newData : item
+    // );
+
+    const newScheduleList = allScheduleList.filter(
+      (item) => item.id !== newData.id
     );
+    deleteSchedule(newData.id);
+    delete newData.color;
+
+    newData.id = createId(newData.start.split(" ")[0], 1);
 
     checkValidate(newData)
       ? (result = true) &&
-        (postSchedule(newData), setScheduleList(newScheduleList))
+        (postSchedule(newData),
+        setAllScheduleList([...newScheduleList, newData]))
       : [];
 
     return result;
