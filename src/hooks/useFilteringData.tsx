@@ -7,8 +7,10 @@ import { getScheduleList } from "../api/schedule";
 import { getCategoryList } from "../api/category";
 import { useEffect } from "react";
 import { ScheduleDataProps } from "../context/dataInterface";
+import { useUserUIDContext } from "./useContext/useUserUidContext";
 
-export const useFilteringData = () => {
+export const useFilteringData = (uid: string) => {
+  const { setUserUID } = useUserUIDContext();
   const { allScheduleList, setAllScheduleList } = useAllScheduleDataContext();
   const { categoryList, setCategoryList } = useCategoryDataContext();
   const { selectedScheduleList, setSelectedScheduleList } =
@@ -39,8 +41,9 @@ export const useFilteringData = () => {
   };
 
   const getAndSetDataList = async () => {
-    const categoryData = await getCategoryList();
-    const scheduleData = await getScheduleList();
+    setUserUID(uid);
+    const categoryData = await getCategoryList(uid);
+    const scheduleData = await getScheduleList(uid);
     setCategoryList(categoryData);
     setAllScheduleList(scheduleData);
   };

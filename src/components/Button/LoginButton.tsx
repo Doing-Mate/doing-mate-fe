@@ -8,6 +8,7 @@ interface LoginButtonProps {
   backgroundColor?: string;
   fontColor?: string;
   borderType?: "none" | "square" | "round" | "roundNone";
+  onClick?: () => void;
 }
 
 const StyledLoginButton = styled(Button)`
@@ -22,6 +23,7 @@ export const LoginButton = ({
   backgroundColor,
   fontColor,
   borderType = "roundNone",
+  onClick,
 }: LoginButtonProps) => {
   return (
     <StyledLoginButton
@@ -30,6 +32,7 @@ export const LoginButton = ({
       borderType={borderType}
       backgroundColor={backgroundColor}
       fontColor={fontColor}
+      onClick={onClick}
     >
       <LoginIcon icon={icon} />
       {text}

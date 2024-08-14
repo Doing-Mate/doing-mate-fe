@@ -1,7 +1,7 @@
 import { Button } from "../common/Button";
 import styled from "styled-components";
 
-interface SecretaryButtonProps {
+interface LogoutButtonProps {
   icon: string;
   onClick?: () => void;
 }
@@ -12,20 +12,21 @@ const IconImage = styled.img`
   margin: auto;
 `;
 
-const StyledSecretaryButton = styled(Button)`
-  margin: 15px 50px;
+const StyledLogoutButton = styled(Button)`
+  margin: 22px;
+  margin-right: 40px;
   float: right;
 `;
 
-export const SecretaryButton = ({ icon, onClick }: SecretaryButtonProps) => {
+export const LogoutButton = ({ icon, onClick }: LogoutButtonProps) => {
   return (
-    <StyledSecretaryButton
-      sizeType={"largeSquare"}
+    <StyledLogoutButton
+      sizeType={"mediumSquare"}
       fontSizeType={"largeFont"}
       borderType={"none"}
       onClick={onClick}
     >
       <IconImage src={icon} />
-    </StyledSecretaryButton>
+    </StyledLogoutButton>
   );
 };

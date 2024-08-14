@@ -17,7 +17,9 @@ export const DatePicker = ({ dataDate, onChangeData }: DatePickerProps) => {
   }, [startDate]);
 
   useEffect(() => {
-    dataDate !== undefined && setStartDate(dayjs(dataDate));
+    dataDate !== undefined
+      ? setStartDate(dayjs(dataDate))
+      : setStartDate(dayjs());
   }, []);
 
   return (

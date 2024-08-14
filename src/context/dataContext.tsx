@@ -2,6 +2,15 @@ import { createContext, useState } from "react";
 
 import { ScheduleDataProps, CategoryDataProps } from "./dataInterface";
 
+interface UserUIDDataType {
+  userUID: string;
+  setUserUID: (uid: string) => void;
+}
+const UserUIDContext = createContext<UserUIDDataType>({
+  userUID: "",
+  setUserUID: () => {},
+});
+
 interface allScheduleDataType {
   allScheduleList: ScheduleDataProps[];
   setAllScheduleList: (scheduleList: ScheduleDataProps[]) => void;
@@ -36,6 +45,7 @@ interface DataContextProviderProps {
   children: React.ReactNode;
 }
 const DataContextProvider = ({ children }: DataContextProviderProps) => {
+  const [userUID, setUserUID] = useState<string>("");
   const [allScheduleList, setAllScheduleList] = useState<ScheduleDataProps[]>(
     []
   );
@@ -45,21 +55,24 @@ const DataContextProvider = ({ children }: DataContextProviderProps) => {
   const [categoryList, setCategoryList] = useState<CategoryDataProps[]>([]);
 
   return (
-    <CategoryDataContext.Provider value={{ categoryList, setCategoryList }}>
-      <AllScheduleDataContext.Provider
-        value={{ allScheduleList, setAllScheduleList }}
-      >
-        <SeletedScheduleDataContext.Provider
-          value={{ selectedScheduleList, setSelectedScheduleList }}
+    <UserUIDContext.Provider value={{ userUID, setUserUID }}>
+      <CategoryDataContext.Provider value={{ categoryList, setCategoryList }}>
+        <AllScheduleDataContext.Provider
+          value={{ allScheduleList, setAllScheduleList }}
         >
-          {children}
-        </SeletedScheduleDataContext.Provider>
-      </AllScheduleDataContext.Provider>
-    </CategoryDataContext.Provider>
+          <SeletedScheduleDataContext.Provider
+            value={{ selectedScheduleList, setSelectedScheduleList }}
+          >
+            {children}
+          </SeletedScheduleDataContext.Provider>
+        </AllScheduleDataContext.Provider>
+      </CategoryDataContext.Provider>
+    </UserUIDContext.Provider>
   );
 };
 
 export {
+  UserUIDContext,
   AllScheduleDataContext,
   SeletedScheduleDataContext,
   CategoryDataContext,

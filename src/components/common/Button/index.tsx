@@ -26,6 +26,7 @@ export const Button = ({
   backgroundColor = "transparent",
   fontColor = "black",
   disabled = false,
+  onClick,
   children,
   ...props
 }: ButtonProps) => {
@@ -38,6 +39,7 @@ export const Button = ({
       backgroundColor={backgroundColor}
       fontColor={fontColor}
       disabled={disabled}
+      onClick={onClick}
       {...props}
     >
       {children}
@@ -99,8 +101,8 @@ const SmallSquareSize = css`
 `;
 
 const MediumSquareSize = css`
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
 `;
 
 const LargeSquareSize = css`
