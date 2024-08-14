@@ -1,14 +1,21 @@
 import styled from "styled-components";
 import { Logo } from "../../components/common/Logo";
-import { SecretaryButton } from "../../components/Button/SecretaryButton";
+import { LogoutButton } from "../../components/Button/LogoutButton";
+import { UserNameLabel } from "../../components/Label/UserNameLabel";
 import MainLogo from "../../assets/logos/logo_main.png";
-import UserIcon from "../../assets/icons/ic_user.png";
+import LogoutIcon from "../../assets/icons/ic_logout.png";
 
-export const Header = () => {
+interface HeaderProps {
+  userName: string;
+  onLogout: () => void;
+}
+
+export const Header = ({ userName, onLogout }: HeaderProps) => {
   return (
     <StyledHeader>
       <MainLogoTitle logoType="main" icon={MainLogo} />
-      <SecretaryButton icon={UserIcon} />
+      <LogoutButton icon={LogoutIcon} onClick={onLogout} />
+      <UserNameLabel text={userName + " 님"} />
     </StyledHeader>
   );
 };

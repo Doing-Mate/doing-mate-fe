@@ -3,8 +3,12 @@ import { ImportantLevelBar } from "./ImportantLevelBar";
 import { CategoryBar } from "./CategoryBar";
 import { useFilteringData } from "../../hooks/useFilteringData";
 
-export const SideBar = () => {
-  const { handleCheckbox, handleCheckImportance } = useFilteringData();
+interface SideBarProps {
+  uid: string;
+}
+
+export const SideBar = ({ uid }: SideBarProps) => {
+  const { handleCheckbox, handleCheckImportance } = useFilteringData(uid);
   return (
     <StyledSideBar>
       <ImportantLevelBar handleCheckImportance={handleCheckImportance} />

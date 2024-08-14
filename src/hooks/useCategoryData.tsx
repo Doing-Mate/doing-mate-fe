@@ -1,9 +1,11 @@
 import { useCategoryDataContext } from "./useContext/useCategoryDataContext";
 import { CategoryDataProps } from "../context/dataInterface";
 import { postCategory, deleteCategory } from "../api/category";
+import { useUserUIDContext } from "./useContext/useUserUidContext";
 
 export const useCategoryData = () => {
   const { categoryList, setCategoryList } = useCategoryDataContext();
+  const { userUID } = useUserUIDContext();
 
   const checkValidate = (newData: CategoryDataProps): boolean => {
     let result = false;
@@ -36,7 +38,8 @@ export const useCategoryData = () => {
 
     checkValidate(newData)
       ? (result = true) &&
-        (postCategory(newData), setCategoryList([...categoryList, newData]))
+        (postCategory(userUID, newData),
+        setCategoryList([...categoryList, newData]))
       : [];
 
     return result;
@@ -47,7 +50,7 @@ export const useCategoryData = () => {
       (item) => item.id !== newData.id
     );
 
-    deleteCategory(newData.id);
+    deleteCategory(userUID, newData.id);
     setCategoryList(newCategoryList);
   };
 
@@ -64,7 +67,7 @@ export const useCategoryData = () => {
 
     checkValidate(newData)
       ? (result = true) &&
-        (postCategory(newData), setCategoryList(newCategoryList))
+        (postCategory(userUID, newData), setCategoryList(newCategoryList))
       : [];
 
     return result;

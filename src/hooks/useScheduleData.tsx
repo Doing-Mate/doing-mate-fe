@@ -1,9 +1,11 @@
 import { ScheduleDataProps } from "../context/dataInterface";
 import { postSchedule, deleteSchedule } from "../api/schedule";
 import { useAllScheduleDataContext } from "./useContext/useAllScheduleDataContext";
+import { useUserUIDContext } from "./useContext/useUserUidContext";
 
 export const useScheduleData = () => {
   const { allScheduleList, setAllScheduleList } = useAllScheduleDataContext();
+  const { userUID } = useUserUIDContext();
 
   const checkValidate = (newData: ScheduleDataProps): boolean => {
     let result = false;
@@ -44,7 +46,7 @@ export const useScheduleData = () => {
 
     checkValidate(newData)
       ? (result = true) &&
-        (postSchedule(newData),
+        (postSchedule(userUID, newData),
         setAllScheduleList([...allScheduleList, newData]))
       : [];
 
@@ -56,7 +58,7 @@ export const useScheduleData = () => {
       (item) => item.id !== newData.id
     );
 
-    deleteSchedule(newData.id);
+    deleteSchedule(userUID, newData.id);
     setAllScheduleList(newScheduleList);
   };
 
@@ -70,14 +72,14 @@ export const useScheduleData = () => {
     const newScheduleList = allScheduleList.filter(
       (item) => item.id !== newData.id
     );
-    deleteSchedule(newData.id);
+    deleteSchedule(userUID, newData.id);
     delete newData.color;
 
     newData.id = createId(newData.start.split(" ")[0], 1);
 
     checkValidate(newData)
       ? (result = true) &&
-        (postSchedule(newData),
+        (postSchedule(userUID, newData),
         setAllScheduleList([...newScheduleList, newData]))
       : [];
 
