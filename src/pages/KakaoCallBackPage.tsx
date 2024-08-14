@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import axios from "axios";
-const { Kakao } = window as any;
+const { Kakao } = window;
 import { useNavigate } from "react-router-dom";
 
 export const KakaoCallBackPage = () => {
